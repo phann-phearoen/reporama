@@ -8,7 +8,7 @@
     <q-drawer 
     show-if-above
     side="right" 
-    width="80" 
+    width="75" 
     style="background-color: rgb(150, 131, 229)">
      
     </q-drawer>

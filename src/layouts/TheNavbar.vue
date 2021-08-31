@@ -6,7 +6,7 @@
       <q-toolbar>
 
         <q-toolbar-title>
-            <img src="../assets/brand.jpg" width="250">
+            <img src="../assets/brand.jpg" style="width: 250px">
         </q-toolbar-title>
 
         <div class="row lt-md gt-xs">
@@ -106,7 +106,7 @@ export default {
 }
 .nav{
     cursor: pointer;
-    margin-right: 5em;
-    font-size: 1rem;
+    margin-right: 4vw;
+    font-size: 1vw;
 }
 </style>
