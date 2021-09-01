@@ -1,18 +1,18 @@
 <template>
-    <q-badge rounded :style="{ backgroundColor: color, width: width }" class="text">
-        <div class="label">{{ label }}</div>
+    <q-badge rounded :style="{ backgroundColor: color, width: width, padding: pad }" class="text">
+        <div class="label" v-if="label">{{ label }}</div>
+        <slot></slot>
     </q-badge>
 </template>
 
 <script>
 export default {
-    props: ['label', 'color', 'width'],
+    props: ['label', 'color', 'width', 'pad', ],
 }
 </script>
 
 <style scoped>
 .text {
-    padding: 1.4vw;
     margin-left: auto;
     margin-right: auto;
     color: white;
@@ -20,7 +20,7 @@ export default {
     font-weight: 600;
 }
 .label {
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
+
 </style>
