@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <div class="row q-mt-lg">
+    <div class="row q-mt-lg q-mb-lg">
         <div class="col-1"></div>
         <div class="col-10">
             <ul class="line-list">
