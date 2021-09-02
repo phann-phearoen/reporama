@@ -1,5 +1,6 @@
 <template>
     <div class="contain">
+        
         <div class="row">
             <base-badge :label="'ライターの紹介'" :color="'rgb(150, 131, 229)'" :width="'70%'" :pad="'1.4vw'"></base-badge>
         </div>
@@ -18,7 +19,6 @@
 
     </div>
 
-    <div class="row" style="height: 500px"></div>
 </template>
 
 <script>
