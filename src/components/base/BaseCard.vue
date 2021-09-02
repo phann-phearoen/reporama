@@ -1,7 +1,7 @@
 <template>
     <a :href="link" class="card" target="_blank">
         <q-card class="my-card">
-            <img :src="src">
+            <img :src="src" class="no-shadow img">
 
             <q-card-section class="q-pt-none">
                 <ul class="des">
@@ -32,5 +32,9 @@ export default {
     font-size: 1vw;
     margin-left: -.5vw;
     color: grey;
+    height: 4vw;
+}
+.img{
+    margin-left: auto;
 }
 </style>
