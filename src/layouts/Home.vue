@@ -11,7 +11,7 @@
 <script>
 import TheTop from '../components/TheTop.vue';
 import Definition from '../components/Definition.vue';
-import Intro from '../components/Intro.vue';
+import Intro from '../components/intro/Intro.vue';
 
 export default {
   components: { TheTop, Definition, Intro, },

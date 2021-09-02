@@ -16,16 +16,11 @@
             <span style="color: rgb(255, 153, 0)">★</span>・・・プレパブ連動企画
         </div>
     </div>
-
-    <div class="row">
-        <div class="col" style="height: 500px"></div>
-    </div>
-    
 </template>
 
 <script>
-import BaseTitle from './base/BaseTitle.vue';
-import BaseCard from './base/BaseCard.vue';
+import BaseTitle from '../base/BaseTitle.vue';
+import BaseCard from '../base/BaseCard.vue';
 
 export default {
     components: { BaseTitle, BaseCard, },
@@ -33,7 +28,7 @@ export default {
         return {
             introInfo: [
                 { 
-                    src: require('../assets/articles/article_1.png'), 
+                    src: require('../../assets/articles/article_1.png'), 
                     link: 'https://wg-salvia.com/archives/30591',
                     des: {
                         line1: 'クリスマス向け︕',
@@ -42,7 +37,7 @@ export default {
                     }
                 },
                 { 
-                    src: require('../assets/articles/article_2.png'),
+                    src: require('../../assets/articles/article_2.png'),
                     link: 'https://wg-salvia.com/archives/29626',
                     des: {
                         line1: '<span style="color: rgb(255, 153, 0)">★</span>美白＆毛穴対策にも︕',
@@ -51,7 +46,7 @@ export default {
                     }
                 },
                 { 
-                    src: require('../assets/articles/article_3.png'),
+                    src: require('../../assets/articles/article_3.png'),
                     link: 'https://wg-salvia.com/archives/29548',
                     des: {
                         line1: '20 分で簡単なめらかアイス♪',
@@ -60,7 +55,7 @@ export default {
                     }
                 },
                 { 
-                    src: require('../assets/articles/article_4.png'),
+                    src: require('../../assets/articles/article_4.png'),
                     link: 'https://wg-salvia.com/archives/31239',
                     des: {
                         line1: '<span style="color: rgb(255, 153, 0)">★</span>「KOH」パールが輝く',
@@ -69,7 +64,7 @@ export default {
                     }
                 },
                 { 
-                    src: require('../assets/articles/article_5.png'),
+                    src: require('../../assets/articles/article_5.png'),
                     link: 'https://wg-salvia.com/archives/27991',
                     des: {
                         line1: '<span style="color: rgb(255, 153, 0)">★</span>やまやの「めんたいチューブ」が',
@@ -77,7 +72,7 @@ export default {
                     }
                 },
                 { 
-                    src: require('../assets/articles/article_6.png'),
+                    src: require('../../assets/articles/article_6.png'),
                     link: 'https://wg-salvia.com/archives/30573',
                     des: {
                         line1: '寝起きの 1 分でパワーチャージ︕',
@@ -85,7 +80,7 @@ export default {
                     }
                 },
                 { 
-                    src: require('../assets/articles/article_7.png'),
+                    src: require('../../assets/articles/article_7.png'),
                     link: 'https://wg-salvia.com/archives/22250',
                     des: {
                         line1: '<span style="color: rgb(255, 153, 0)">★</span>粘土クリエイター !?',
@@ -94,7 +89,7 @@ export default {
                     }
                 },
                 { 
-                    src: require('../assets/articles/article_8.png'),
+                    src: require('../../assets/articles/article_8.png'),
                     link: 'https://wg-salvia.com/archives/28324',
                     des: {
                         line1: '子連れ OK ︕',
@@ -105,13 +100,6 @@ export default {
             ],
         }
     },
-    // computed: {
-    //     loneHeight() {
-    //         let el = document.getElementById('card');
-    //         return el.offsetHeight;
-    //     }
-    // }
-
 }
 </script>
 
