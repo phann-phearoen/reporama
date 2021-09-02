@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="pinkey"><hr class="pinky-line"></div>
-        <div class="title">{{ title }}</div>
+        <slot></slot><div class="title">{{ title }}</div>
         <div class="pinkey"><hr class="pinky-line"></div>
     </div>
 </template>

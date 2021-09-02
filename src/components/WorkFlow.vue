@@ -9,6 +9,8 @@
 
     <twitters></twitters>
 
+    <merit></merit>
+
 
 </div>
 
@@ -17,9 +19,10 @@
 <script>
 import BaseBadge from './base/BaseBadge.vue';
 import Twitters from './workflow/Twitters.vue';
+import Merit from './workflow/Merit.vue';
 
 export default {
-    components: { BaseBadge, Twitters, }
+    components: { BaseBadge, Twitters, Merit, }
     
 }
 </script>
