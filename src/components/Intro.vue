@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import Example from './Example.vue';
-import Pros from './Pros.vue';
-import Writters from './Writters.vue';
+import Example from './intro/Example.vue';
+import Pros from './intro/Pros.vue';
+import Writters from './intro/Writters.vue';
 
 export default {
     components: { Example, Pros, Writters, },
