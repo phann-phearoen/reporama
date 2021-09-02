@@ -1,5 +1,5 @@
 <template>
-    <q-badge rounded :style="{ backgroundColor: color, width: width, padding: pad }" class="text">
+    <q-badge rounded :style="{ backgroundColor: color, width: width, padding: pad, fontSize: fontSize }" class="text">
         <div class="label" v-if="label">{{ label }}</div>
         <slot></slot>
     </q-badge>
@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    props: ['label', 'color', 'width', 'pad', ],
+    props: ['label', 'color', 'width', 'pad', 'fontSize', ],
 }
 </script>
 
@@ -21,6 +21,7 @@ export default {
 }
 .label {
     margin: 0 auto;
+    display: flex;
 }
 
 </style>
