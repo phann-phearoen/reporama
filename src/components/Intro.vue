@@ -2,15 +2,19 @@
     <base-title :title="'記事例'"></base-title>
     <div class="row contain">
         <base-card
-        class="col-xl-3 col-lg-4"
+        class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12"
         v-for="(info, index) in introInfo"
         :key="index"
         :link="info.link"
-        :src="info.src"
-        :des="info.des"
-        >
-        
+        :src="info.src">
+            <ul class="des">
+                <li v-for="line in info.des" :key="line" v-html="line"></li>
+            </ul>
         </base-card>
+
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 lone self-end" style="height: 5vw">
+            <span style="color: rgb(255, 153, 0)">★</span>・・・プレパブ連動企画
+        </div>
     </div>
 
     <div class="row">
@@ -41,7 +45,7 @@ export default {
                     src: require('../assets/articles/article_2.png'),
                     link: 'https://wg-salvia.com/archives/29626',
                     des: {
-                        line1: '★美白＆毛穴対策にも︕',
+                        line1: '<span style="color: rgb(255, 153, 0)">★</span>美白＆毛穴対策にも︕',
                         line2: 'イエスパのシートマスク',
                         line3: '＆パックがすごい！'
                     }
@@ -59,7 +63,7 @@ export default {
                     src: require('../assets/articles/article_4.png'),
                     link: 'https://wg-salvia.com/archives/31239',
                     des: {
-                        line1: '★「KOH」パールが輝く',
+                        line1: '<span style="color: rgb(255, 153, 0)">★</span>「KOH」パールが輝く',
                         line2: '　大人可愛い腕時計︕',
                         line3: 'プレゼントにもおすすめ'
                     }
@@ -68,7 +72,7 @@ export default {
                     src: require('../assets/articles/article_5.png'),
                     link: 'https://wg-salvia.com/archives/27991',
                     des: {
-                        line1: '★やまやの「めんたいチューブ」が',
+                        line1: '<span style="color: rgb(255, 153, 0)">★</span>やまやの「めんたいチューブ」が',
                         line2: '美味しくて便利︕簡単レシピも♪'
                     }
                 },
@@ -84,7 +88,7 @@ export default {
                     src: require('../assets/articles/article_7.png'),
                     link: 'https://wg-salvia.com/archives/22250',
                     des: {
-                        line1: '★粘土クリエイター !?',
+                        line1: '<span style="color: rgb(255, 153, 0)">★</span>粘土クリエイター !?',
                         line2: '小学生がおちゃっぴのねんど',
                         line3: '「ピカリ」を体験'
                     }
@@ -98,9 +102,16 @@ export default {
                         line3: '「HIKARINO」でエステ体験取材'
                     }
                 },
-            ]
+            ],
         }
-    }
+    },
+    // computed: {
+    //     loneHeight() {
+    //         let el = document.getElementById('card');
+    //         return el.offsetHeight;
+    //     }
+    // }
+
 }
 </script>
 
@@ -108,5 +119,18 @@ export default {
 .contain{
     width: 95%;
     margin: 0 auto;
+}
+.des{
+    list-style-type: none;
+    font-size: 1vw;
+    color: grey;
+    height: 4vw;
+    margin-left: -1vw;
+    margin-bottom: 1vw;
+}
+.lone{
+    padding: 1vw;
+    font-size: 1vw;
+    color: grey;
 }
 </style>
