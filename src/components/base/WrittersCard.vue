@@ -49,7 +49,7 @@ export default {
 <style scoped>
 .my-card{
     width: 80%;
-    margin: 2vw auto;
+    margin: 2vw auto -1vw auto;
 }
 .purplish-line{
     background-color: rgb(150, 131, 229);
@@ -73,10 +73,23 @@ export default {
     color: rgb(150, 131, 229);
     font-size: 1vw;
 }
+
+ul {
+  list-style: none;
+}
+ul li::before {
+  content: "\2022";
+  color: rgb(150, 131, 229);
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+}
+
 .bottom-right{
     flex-direction: column;
     flex-grow: 0 1;
-    margin-top: 2.5vw;
+    margin-top: 2vw;
 }
 .left{
     padding-top: 1vw;
