@@ -7,15 +7,19 @@
         <q-img src="../assets/flow.png"></q-img>
     </div>
 
+    <twitters></twitters>
+
+
 </div>
 
 </template>
 
 <script>
 import BaseBadge from './base/BaseBadge.vue';
+import Twitters from './workflow/Twitters.vue';
 
 export default {
-    components: { BaseBadge, }
+    components: { BaseBadge, Twitters, }
     
 }
 </script>
