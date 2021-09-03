@@ -1,25 +1,43 @@
 <template>
-<div class="qna" style="width: 80%">
-    <q-list bordered class="rounded-borders">
-        <q-expansion-item
-            expand-separator
-            icon="perm_identity"
-            label="納期はどのくらいですか︖"
-        >
-            <q-card>
-            <q-card-section>
-                体験する内容によって前後しますが、多くのケースでは、
-                担当ライターの手元に商品が届いてから 1 週間～ 10 日間程度／
-                イベントに参加してから 1 週間～ 10 日間程度で記事を納品いたします。
-            </q-card-section>
-            </q-card>
-        </q-expansion-item>
-    </q-list>
-</div>
+
+    <q-expansion-item class="expan">
+        <template v-slot:header>
+        <q-item-section>
+            <div class="row">
+                <div class="col-1">
+                    <p class="text-h3" style="color: rgb(150, 131, 229)">Q</p>
+                </div>
+                <div class="col-11 self-center text-h5" style="color: grey">
+                    {{ question }}
+                </div>
+            </div>
+        </q-item-section>
+        </template>
+
+        <q-card>
+        <q-card-section class="answer">
+            <div class="row">
+                <div class="col-1 text-h3" style="color: white">A
+                </div>
+                <div class="col-11 text-h5" style="color: white">
+                    {{ answer }}
+                </div>
+            </div>
+        </q-card-section>
+        </q-card>
+    </q-expansion-item>
+    
 </template>
 
-<style scoped>
-.qna{
-    margin: 0 auto;
+<script>
+export default {
+    props: ['question', 'answer', ],
 }
+</script>
+
+<style scoped>
+.answer{
+    background-color: rgb(150, 131, 229);
+}
+
 </style>
