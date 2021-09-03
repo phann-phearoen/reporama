@@ -6,7 +6,6 @@
 
     <q-form
     @submit="onSubmit"
-    @reset="onReset"
     class="q-gutter-md form"
     >
         <q-input
@@ -153,6 +152,13 @@
         </div>
     </q-form>
 
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-1">
+            <q-img @click="toTop" src="../assets/PAGE-TOP.png" class="to-top" width="80%"></q-img>   
+        </div>
+    </div>
+
 </div>
 </template>
 
@@ -179,7 +185,15 @@ export default {
             kikakuConsents: null,
             inquiry: '',
         }
-    }
+    },
+    methods: {
+        onSubmit() {
+            
+        },
+        toTop() {
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth', });
+        }
+    },
 }
 </script>
 
@@ -189,15 +203,21 @@ export default {
 }
 .form{
     width: 55%;
-    margin: 3vw auto;
+    margin: 3vw auto 0;
 }
 .label{
     font-size: 1vw;
     color: grey;
 }
 .submit{
-    margin: .5vw auto;
+    margin: .5vw auto -.5vw;
     font-size: 1vw;
     padding: 0 2.5vw;
+}
+.to-top{
+    width: 80vw;
+    margin-top: -4vw;
+    margin-bottom: -1vw;
+    cursor: pointer;
 }
 </style>
