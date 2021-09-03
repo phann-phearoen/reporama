@@ -14,8 +14,6 @@
 
   <contact></contact>
 
-  <div class="row" style="height: 500px"></div>
-
 </template>
 
 <script>
