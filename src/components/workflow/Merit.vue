@@ -1,7 +1,7 @@
 <template>
     <div class="contain">
         <base-title :title="'掲載や読者プレゼントキャンペーンのメリット'">
-            <q-img src="../../assets/salvia-logo.png" width="15%"></q-img>
+            <q-img src="../../assets/salvia-logo.png" width="15%" class="gt-xs"></q-img>
         </base-title>
         <div class="row merit">
             <q-img src="../../assets/contribute-merit1.png"></q-img>

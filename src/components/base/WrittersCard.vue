@@ -1,38 +1,47 @@
 <template>
     <q-card class="my-card">
       <q-card-section>
-        <hr class="purplish-line">
+        <hr class="purplish-line" :style="{ height: lineHeight + 'px' }">
       </q-card-section>
       <q-card-section>
-          <div class="row q-gutter-lg">
-              <div class="col-2 column items-center">
-                  <q-img :src="src" width="80%"></q-img>
-                  <div class="name">{{ name }}</div>
-              </div>
+            <div class="row q-gutter-lg">
+                <div class="col-2 column items-center">
+                    <q-img :src="src" :style="{ width: avatarWidth + '%' }"></q-img>
+                    <div class="name" :style="{ fontSize: nameSize + 'vw' }">{{ name }}</div>
+                </div>
 
-              <div class="col">
-                  <div class="row description">
-                      {{ des }}
-                  </div>
-                  <div class="row">
-                      <div class="col-3 bottom-right left">
-                          <base-badge 
-                          :label="'記事テストのご参考'"
-                          :color="'rgb(150, 131, 229)'" 
-                          :width="'75%'" :pad="'1vw'" 
-                          :fontSize="'1vw'">
-                          </base-badge>
-                      </div>
-                      <div class="col bottom-right right">
-                          <ul>
-                              <li v-for="link in links" :key="link">
-                                <a :href="link.ref" target="_blank" class="link">{{ link.text }}</a>
-                              </li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-          </div>
+                <div class="col">
+                    <div class="row description" :style="{ fontSize: desSize + 'vw' }">
+                        {{ des }}
+                    </div>
+                    <div class="row">
+                        <div class="col-3 bottom-right left">
+                            <base-badge 
+                            :label="'記事テストのご参考'"
+                            :color="'rgb(150, 131, 229)'" 
+                            :pad="badgePad"
+                            :fontSize="badgeFontSize"
+                            >
+                            </base-badge>
+                        </div>
+                        <div class="col bottom-right right gt-xs">
+                            <ul>
+                                <li v-for="link in links" :key="link">
+                                    <a :href="link.ref" target="_blank" class="link" :style="{ fontSize: linkSize + 'vw' }">{{ link.text }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row bottom-right right lt-sm">
+                <ul>
+                    <li v-for="link in links" :key="link">
+                    <a :href="link.ref" target="_blank" class="link" :style="{ fontSize: linkSize + 'vw' }">{{ link.text }}</a>
+                    </li>
+                </ul>
+            </div>
       </q-card-section>
     </q-card>
 </template>
@@ -43,6 +52,79 @@ import BaseBadge from './BaseBadge.vue';
 export default {
     props: ['src', 'name', 'des', 'links', ],
     components: { BaseBadge, },
+    data() {
+        return {
+            screenWidth: 0,
+            badgeWidth: 0,
+            badgePad: 0,
+            badgeFontSize: 0,
+            lineHeight: 0,
+            avatarWidth: 0,
+            nameSize: 0,
+            desSize: 0,
+            linkSize: 0,
+        }
+    },
+    methods: {
+        handleResize() {
+            this.screenWidth = window.innerWidth;
+        },
+    },
+    watch: {
+        screenWidth(val) {
+            if (val > 1600) {
+                this.badgePad = 1;
+                this.badgeFontSize = 1;
+                this.avatarWidth = 90;
+                this.nameSize = 1;
+                this.desSize = 1;
+                this.linkSize = 1;
+            } else if (val > 1400) {
+                this.badgePad = 1;
+                this.badgeFontSize = 1;
+                this.avatarWidth = 90;
+                this.nameSize = 1;
+                this.desSize = 1;
+                this.linkSize = 1;
+            } else if(val > 1200){ 
+                this.badgePad = 1;
+                this.badgeFontSize = 1;
+                this.avatarWidth = 90;
+                this.nameSize = 1;
+                this.desSize = 1;
+                this.linkSize = 1;
+            } else if(val > 1000) {
+                this.badgeFontSize = 1.3;
+                this.avatarWidth = 100;
+                this.lineHeight = 2.5;
+                this.nameSize = 2.5;
+                this.desSize = 2;
+                this.linkSize = 2;
+            } else if(val > 500){
+                this.badgeFontSize = 1.4;
+                this.avatarWidth = 100;
+                this.lineHeight = 2;
+                this.nameSize = 3;
+                this.desSize = 2.5;
+                this.linkSize = 2.5;
+            } else {
+                this.badgeFontSize = 2;
+                this.lineHeight = 1.2;
+                this.avatarWidth = 110;
+                this.nameSize = 3.2;
+                this.desSize = 3;
+                this.linkSize = 3;
+            }
+        },
+    },
+
+    created() {
+        window.addEventListener("resize", this.handleResize);
+        this.handleResize();
+    },
+    unmounted() {
+        window.removeEventListener("resize", this.handleResize);
+    },
 }
 </script>
 
@@ -54,12 +136,10 @@ export default {
 .purplish-line{
     background-color: rgb(150, 131, 229);
     width: 100%;
-    height: 2.5px;
     border: none;
 }
 
 .name{
-    font-size: 1.2vw;
     color: rgb(205, 75, 128);
     font-weight: 500;
 }

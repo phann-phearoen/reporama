@@ -1,9 +1,9 @@
 <template>
     <div class="row badger" id="definition-top">
-        <base-badge :label="'レポラマとは'" :color="'rgb(205, 75, 128)'" :width="'80%'" :pad="'1.4vw'"></base-badge>
+        <base-badge :label="'レポラマとは'" :color="'rgb(205, 75, 128)'" :width="'80%'"></base-badge>
     </div>
 
-    <div class="row plain">
+    <div class="row plain" :style="{ fontSize: plainFontSize + 'vw'}">
         <div class="contain">
             <span class="pinkish">レポート</span>+
             <span class="purplish">ライティング</span>+
@@ -13,37 +13,41 @@
     </div>
 
     <div class="row q-mt-lg">
-        <div class="col-2"></div>
-        <div class="col-3">
+        <div class="col-2 gt-xs"></div><div class="col-1 lt-sm"></div>
+        <div class="col-3 col-xs-2">
             <div class="badge-outter">
-                <base-badge :color="'rgb(150, 131, 229)'" :width="'85%'" :pad="'1.1vw'">
-                    <div class="badge-inner"><span class="yellowish">レポ</span>―ト</div>
+                <base-badge :color="'rgb(150, 131, 229)'" :width="'90%'" :pad="'1.5'">
+                    <div class="badge-inner" :style="{ fontSize: desFontSize + 'vw'}"><span class="yellowish" :style="{ fontSize: abbreFontSize + 'vw'}">レポ</span>―ト</div>
                 </base-badge>
             </div>
             <div class="badge-outter">
-                <base-badge :color="'rgb(205, 75, 128)'" :width="'85%'" :pad="'1.1vw'">
-                    <div class="badge-inner"><span class="yellowish">ラ</span>イティング</div>
+                <base-badge :color="'rgb(205, 75, 128)'" :width="'90%'" :pad="'1.5'">
+                    <div class="badge-inner" :style="{ fontSize: desFontSize + 'vw'}"><span class="yellowish" :style="{ fontSize: abbreFontSize + 'vw'}">ラ</span>イティング</div>
                 </base-badge>
             </div>
             <div class="badge-outter">
-                <base-badge :color="'rgb(150, 131, 229)'" :width="'85%'" :pad="'1.1vw'">
-                    <div class="badge-inner"><span class="yellowish">マ</span>マ</div>
+                <base-badge :color="'rgb(150, 131, 229)'" :width="'90%'" :pad="'1.5'">
+                    <div class="badge-inner" :style="{ fontSize: desFontSize + 'vw'}"><span class="yellowish" :style="{ fontSize: abbreFontSize + 'vw'}">マ</span>マ</div>
                 </base-badge>
             </div>
         </div>
         <div class="col-1 self-center arrow">
             <q-img src="../assets/arrow.png" width="75%"></q-img>
         </div>
-        <div class="col-6 self-center">
-            <div class="des-plain">の頭文字からレポラマと名付けた</div>
-            <div class="des-plain"><span class="des-purplish">「レポート記事作成サービス」</span>です。</div>
+        <div class="col-6 self-center gt-xs">
+            <div class="des-plain" :style="{ fontSize: abbreFontSize + 'vw'}">の頭文字からレポラマと名付けた</div>
+            <div class="des-plain" :style="{ fontSize: abbreFontSize + 'vw'}"><span class="des-purplish">「レポート記事作成サービス」</span>です。</div>
+        </div>
+        <div class="col-7 self-center lt-sm">
+            <div class="des-plain" :style="{ fontSize: abbreFontSize + 'vw'}">の頭文字からレポラマと名付けた</div>
+            <div class="des-plain" :style="{ fontSize: abbreFontSize + 'vw'}"><span class="des-purplish">「レポート記事作成サービス」</span>です。</div>
         </div>
     </div>
 
     <div class="row q-mt-lg q-mb-lg">
-        <div class="col-1"></div>
-        <div class="col-10">
-            <ul class="line-list">
+        <div class="col-1 gt-xs"></div>
+        <div class="col">
+            <ul class="line-list" :style="{ fontSize: lineListFontSize + 'vw'}">
                 <li class="line">自社製品やサービスなどを、レポラマ所属スタッフが実際に使用・体験してレポートします。</li>
                 <li class="line">御社が運営するコンテンツや印刷物でご利用いただけるような記事を納品します。</li>
                 <li class="line-sticked">
@@ -78,12 +82,17 @@ export default {
     data() {
         return {
         screenWidth: 0,
-        fontSize: 0,
-        fontWeight: 0,
         marginBottom: 0,
         marginTop: 0,
         salviaHeight: 0,
         salviaMargin: 0,
+
+        desFontSize: 0,
+        abbreFontSize: 0,
+
+        plainFontSize: 0,
+
+        lineListFontSize: 0,
         }
     },
     methods: {
@@ -93,43 +102,76 @@ export default {
     },
     watch: {
         screenWidth(val) {
-        if (val > 1600) {
-            this.fontSize = 1.7;
-            this.fontWeight = 600;
+        if (val > 1600) {            
             this.marginTop = 1.2;
             this.marginBottom = 1.5;
             this.salviaHeight = 3;
             this.salviaMargin = -1.5;
+
+            this.desFontSize = 1.5;
+            this.abbreFontSize = 2;
+
+            this.plainFontSize = 3;
+
+            this.lineListFontSize = 1.5;
         } else if (val > 1400) {
-            this.fontSize = 1.5;
-            this.fontWeight = 600;
             this.marginTop = 1;
             this.salviaHeight = 3.7;
             this.marginBottom = 1.25;
+
+            this.desFontSize = 1.5;
+            this.abbreFontSize = 2;
+
+            this.plainFontSize = 3;
+
+            this.lineListFontSize = 1.5;
         } else if(val > 1200){ 
-            this.fontSize = 1.5;
-            this.fontWeight = 500;
             this.marginBottom = 1.1;
             this.marginTop = 1;
             this.salviaHeight = 3.6;
+            this.salviaMargin = -1.7;
+
+            this.desFontSize = 1.5;
+            this.abbreFontSize = 2;
+
+            this.plainFontSize = 3;
+
+            this.lineListFontSize = 1.5;
         } else if(val > 1000) {
-            this.fontSize = 1.5;
-            this.fontWeight = 400;
             this.marginBottom = .8;
             this.marginTop = .8;
+
+            this.desFontSize = 2.3;
+            this.abbreFontSize = 2.3;
+
+            this.plainFontSize = 3.3;
+
+            this.lineListFontSize = 2;
         } else if(val > 500){
-            this.fontSize = 1.4;
-            this.fontWeight = 300;
             this.marginBottom = .5;
             this.marginTop = .7;
-            this.salviaMargin = -2;
+
+            this.salviaHeight = 5;
+            this.salviaMargin = -2.6;
+
+            this.desFontSize = 2.5;
+            this.abbreFontSize = 2.5;
+
+            this.plainFontSize = 3.5;
+
+            this.lineListFontSize = 2.4;
         } else {
-            this.fontSize = 4.5;
-            this.fontWeight = 400;
             this.marginTop = 1;
             this.marginBottom = 1;
-            this.salviaHeight = 8;
-            this.salviaMargin = -4;
+            this.salviaHeight = 7;
+            this.salviaMargin = -3.4;
+
+            this.desFontSize = 2.7;
+            this.abbreFontSize = 3;
+
+            this.plainFontSize = 4;
+
+            this.lineListFontSize = 3;
         }
         },
     },
@@ -149,7 +191,6 @@ export default {
     margin: 3vw auto;
 }
 .plain{
-    font-size: 2vw;
     color: grey;
     font-weight: 600;
     margin-left: auto;
@@ -170,10 +211,8 @@ export default {
 .badge-inner{
     margin-right: auto;
     margin-left: 1.3vw;
-    font-size: 1.5vw;
 }
 .yellowish{
-    font-size: 2vw;
     color: rgb(255, 255, 100);
 }
 .arrow{
@@ -181,8 +220,8 @@ export default {
 }
 
 .des-plain{
-    font-size: 1.9vw;
     color: grey;
+    margin-right: 4vw;
 }
 .des-purplish{
     color: rgb(205, 75, 128);
@@ -192,7 +231,6 @@ export default {
 
 .line-list{
     list-style-type: none;
-    font-size: 1.2vw;
     color: grey;
 }
 .line{

@@ -2,7 +2,7 @@
     <div class="contain">
         
         <div class="row">
-            <base-badge :label="'ライターの紹介'" :color="'rgb(150, 131, 229)'" :width="'80%'" :pad="'1.4vw'"></base-badge>
+            <base-badge :label="'ライターの紹介'" :color="'rgb(150, 131, 229)'" :width="'80%'"></base-badge>
         </div>
 
         <div class="row card">

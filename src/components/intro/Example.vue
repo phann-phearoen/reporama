@@ -2,17 +2,17 @@
     <base-title :title="'記事例'"></base-title>
     <div class="row contain" id="intro-top">
         <base-card
-        class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12"
+        class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12"
         v-for="(info, index) in introInfo"
         :key="index"
         :link="info.link"
         :src="info.src">
-            <ul class="des">
+            <ul class="des" :style="{ fontSize: desFontSize + 'vw'}">
                 <li v-for="line in info.des" :key="line" v-html="line"></li>
             </ul>
         </base-card>
 
-        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12 lone self-end" style="height: 5vw">
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 lone self-end" style="height: 5vw" :style="{ fontSize: desFontSize + 'vw'}">
             <span style="color: rgb(255, 153, 0)">★</span>・・・プレパブ連動企画
         </div>
     </div>
@@ -68,7 +68,8 @@ export default {
                     link: 'https://wg-salvia.com/archives/27991',
                     des: {
                         line1: '<span style="color: rgb(255, 153, 0)">★</span>やまやの「めんたいチューブ」が',
-                        line2: '美味しくて便利︕簡単レシピも♪'
+                        line2: '美味しくて便利︕簡単レシピも♪',
+                        line3: '</br>',
                     }
                 },
                 { 
@@ -76,7 +77,8 @@ export default {
                     link: 'https://wg-salvia.com/archives/30573',
                     des: {
                         line1: '寝起きの 1 分でパワーチャージ︕',
-                        line2: 'プロに聞く瞑想のやり方︕'
+                        line2: 'プロに聞く瞑想のやり方︕',
+                        line3: '</br>',
                     }
                 },
                 { 
@@ -98,7 +100,39 @@ export default {
                     }
                 },
             ],
+            screenWidth: 0,
+            desFontSize: 0,
         }
+    },
+    methods: {
+        handleResize() {
+        this.screenWidth = window.innerWidth;
+        }
+    },
+    watch: {
+        screenWidth(val) {
+            if (val > 1600) {
+                this.desFontSize = 1;
+            } else if (val > 1400) {
+                this.desFontSize = 1;
+            } else if(val > 1200){ 
+                this.desFontSize = 1;
+            } else if(val > 1000) {
+                this.desFontSize = 2;
+            } else if(val > 500){
+                this.desFontSize = 2;
+            } else {
+                this.desFontSize = 4;
+            }
+        },
+    },
+
+    created() {
+        window.addEventListener("resize", this.handleResize);
+        this.handleResize();
+    },
+    unmounted() {
+        window.removeEventListener("resize", this.handleResize);
     },
 }
 </script>
@@ -110,15 +144,13 @@ export default {
 }
 .des{
     list-style-type: none;
-    font-size: 1vw;
     color: grey;
-    height: 4vw;
     margin-left: -1vw;
     margin-bottom: 1vw;
 }
 .lone{
     padding: 1vw;
-    font-size: 1vw;
+    margin: 5vw 0;
     color: grey;
 }
 </style>
