@@ -1,6 +1,6 @@
 <template>
     <div class="row badger" id="definition-top">
-        <base-badge :label="'レポラマとは'" :color="'rgb(205, 75, 128)'" :width="'80%'" :pad="'1.4vw'"></base-badge>
+        <base-badge :label="'レポラマとは'" :color="'rgb(205, 75, 128)'" :width="'80%'"></base-badge>
     </div>
 
     <div class="row plain">
@@ -16,18 +16,18 @@
         <div class="col-2"></div>
         <div class="col-3">
             <div class="badge-outter">
-                <base-badge :color="'rgb(150, 131, 229)'" :width="'85%'" :pad="'1.1vw'">
-                    <div class="badge-inner"><span class="yellowish">レポ</span>―ト</div>
+                <base-badge :color="'rgb(150, 131, 229)'" :width="'90%'" :pad="'1.5'">
+                    <div class="badge-inner" :style="{ fontSize: desFontSize + 'vw'}"><span class="yellowish" :style="{ fontSize: abbreFontSize + 'vw'}">レポ</span>―ト</div>
                 </base-badge>
             </div>
             <div class="badge-outter">
-                <base-badge :color="'rgb(205, 75, 128)'" :width="'85%'" :pad="'1.1vw'">
-                    <div class="badge-inner"><span class="yellowish">ラ</span>イティング</div>
+                <base-badge :color="'rgb(205, 75, 128)'" :width="'90%'" :pad="'1.5'">
+                    <div class="badge-inner" :style="{ fontSize: desFontSize + 'vw'}"><span class="yellowish" :style="{ fontSize: abbreFontSize + 'vw'}">ラ</span>イティング</div>
                 </base-badge>
             </div>
             <div class="badge-outter">
-                <base-badge :color="'rgb(150, 131, 229)'" :width="'85%'" :pad="'1.1vw'">
-                    <div class="badge-inner"><span class="yellowish">マ</span>マ</div>
+                <base-badge :color="'rgb(150, 131, 229)'" :width="'90%'" :pad="'1.5'">
+                    <div class="badge-inner" :style="{ fontSize: desFontSize + 'vw'}"><span class="yellowish" :style="{ fontSize: abbreFontSize + 'vw'}">マ</span>マ</div>
                 </base-badge>
             </div>
         </div>
@@ -78,12 +78,13 @@ export default {
     data() {
         return {
         screenWidth: 0,
-        fontSize: 0,
-        fontWeight: 0,
         marginBottom: 0,
         marginTop: 0,
         salviaHeight: 0,
         salviaMargin: 0,
+
+        desFontSize: 0,
+        abbreFontSize: 0
         }
     },
     methods: {
@@ -93,43 +94,49 @@ export default {
     },
     watch: {
         screenWidth(val) {
-        if (val > 1600) {
-            this.fontSize = 1.7;
-            this.fontWeight = 600;
+        if (val > 1600) {            
             this.marginTop = 1.2;
             this.marginBottom = 1.5;
             this.salviaHeight = 3;
             this.salviaMargin = -1.5;
+
+            this.desFontSize = 1.5;
+            this.abbreFontSize = 2;
         } else if (val > 1400) {
-            this.fontSize = 1.5;
-            this.fontWeight = 600;
             this.marginTop = 1;
             this.salviaHeight = 3.7;
             this.marginBottom = 1.25;
+
+            this.desFontSize = 1.5;
+            this.abbreFontSize = 2;
         } else if(val > 1200){ 
-            this.fontSize = 1.5;
-            this.fontWeight = 500;
             this.marginBottom = 1.1;
             this.marginTop = 1;
             this.salviaHeight = 3.6;
+
+            this.desFontSize = 1.5;
+            this.abbreFontSize = 2;
         } else if(val > 1000) {
-            this.fontSize = 1.5;
-            this.fontWeight = 400;
             this.marginBottom = .8;
             this.marginTop = .8;
+
+            this.desFontSize = 1.5;
+            this.abbreFontSize = 2;
         } else if(val > 500){
-            this.fontSize = 1.4;
-            this.fontWeight = 300;
             this.marginBottom = .5;
             this.marginTop = .7;
             this.salviaMargin = -2;
+
+            this.desFontSize = 1.5;
+            this.abbreFontSize = 2;
         } else {
-            this.fontSize = 4.5;
-            this.fontWeight = 400;
             this.marginTop = 1;
             this.marginBottom = 1;
             this.salviaHeight = 8;
             this.salviaMargin = -4;
+
+            this.desFontSize = 2.7;
+            this.abbreFontSize = 3;
         }
         },
     },
@@ -170,10 +177,8 @@ export default {
 .badge-inner{
     margin-right: auto;
     margin-left: 1.3vw;
-    font-size: 1.5vw;
 }
 .yellowish{
-    font-size: 2vw;
     color: rgb(255, 255, 100);
 }
 .arrow{
