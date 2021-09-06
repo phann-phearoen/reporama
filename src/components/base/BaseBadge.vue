@@ -1,5 +1,7 @@
 <template>
-    <q-badge rounded :style="{ backgroundColor: color, width: width, padding: pad, fontSize: fontSize }" class="text">
+    <q-badge rounded 
+    :style="{ backgroundColor: color, width: width, padding: padValue , fontSize: fontSizeValue }" 
+    class="text">
         <div class="label" v-if="label">{{ label }}</div>
         <slot></slot>
     </q-badge>
@@ -7,7 +9,74 @@
 
 <script>
 export default {
-    props: ['label', 'color', 'width', 'pad', 'fontSize', ],
+    props: ['label', 'color', 'width', 'pad', 'fontSize'],
+    data() {
+        return {
+            screenWidth: 0,
+            localFontSize: 0,
+            localPad: 0
+        }
+    },
+    computed: {
+        padValue() {
+            if (this.pad){
+                return this.pad;
+            }
+            else{
+                return this.localPad;
+            }
+        },
+        fontSizeValue() {
+            if (this.fontSize){
+                return this.fontSize;
+            }
+            else{
+                return this.localFontSize;
+            }
+        }
+    },
+    methods: {
+        handleResize() {
+        this.screenWidth = window.innerWidth;
+        },
+    },
+    watch: {
+        screenWidth(val) {
+        if (val > 1600) {
+            this.localFontSize = 1.7 + 'vw';
+            this.localPad = 1.4 + 'vw';
+
+        } else if (val > 1400) {
+            this.localFontSize = 1.8 + 'vw';
+            this.localPad = 1.4 + 'vw';
+
+        } else if(val > 1200){ 
+            this.localFontSize = 1.9;
+            this.localPad = 1.4;
+
+        } else if(val > 1000) {
+            this.localFontSize = 2;
+            this.localPad = 1.5;
+
+        } else if(val > 500){
+            this.localFontSize = 2.2;
+            this.localPad = 1.5;
+
+        } else {
+            this.localFontSize = 3;
+            this.localPad = 1.4;
+
+        }
+        },
+    },
+
+    created() {
+        window.addEventListener("resize", this.handleResize);
+        this.handleResize();
+    },
+    unmounted() {
+        window.removeEventListener("resize", this.handleResize);
+    },
 }
 </script>
 
@@ -16,7 +85,6 @@ export default {
     margin-left: auto;
     margin-right: auto;
     color: white;
-    font-size: 2vw;
     font-weight: 600;
 }
 .label {
