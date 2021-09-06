@@ -3,7 +3,7 @@
         <base-title :title="'レポラマにお願いするメリット'"></base-title>
 
         <div class="row q-mt-lg">
-            <div class="col-1 gt-xs"></div>
+            <div class="col-1 gt-md"></div>
             <div class="col-3 q-ml-md self-center pillar">
                 <q-img src="../../assets/merit1.png" :width="pointWidth + '%'"></q-img>
             </div>
@@ -16,7 +16,7 @@
         </div>
         
         <div class="row">
-            <div class="col-1 gt-xs"></div>
+            <div class="col-1 gt-md"></div>
             <div class="col-3 q-ml-md self-center pillar">
                 <q-img src="../../assets/merit1.png" :width="pointWidth + '%'"></q-img>
             </div>
@@ -29,7 +29,7 @@
         </div>
 
         <div class="row">
-            <div class="col-1 gt-xs"></div>
+            <div class="col-1 gt-md"></div>
             <div class="col-3 q-ml-md self-center pillar">
                 <q-img src="../../assets/merit1.png" :width="pointWidth + '%'"></q-img>
             </div>
@@ -91,7 +91,9 @@ export default {
             } else if(val > 1200){ 
 
             } else if(val > 1000) {
-
+                this.pointWidth = 100;
+                this.arrowPad = 1;
+                this.textFontSize = 2;
             } else if(val > 500){
 
             } else {
