@@ -1,6 +1,6 @@
 <template>
     <q-badge rounded 
-    :style="{ backgroundColor: color, width: width, padding: padValue , fontSize: fontSizeValue }" 
+    :style="{ backgroundColor: color, width: width, padding: padValue + 'vw', fontSize: fontSizeValue + 'vw'}" 
     class="text">
         <div class="label" v-if="label">{{ label }}</div>
         <slot></slot>
@@ -43,12 +43,12 @@ export default {
     watch: {
         screenWidth(val) {
         if (val > 1600) {
-            this.localFontSize = 1.7 + 'vw';
-            this.localPad = 1.4 + 'vw';
+            this.localFontSize = 1.7;
+            this.localPad = 1.4;
 
         } else if (val > 1400) {
-            this.localFontSize = 1.8 + 'vw';
-            this.localPad = 1.4 + 'vw';
+            this.localFontSize = 1.8;
+            this.localPad = 1.4;
 
         } else if(val > 1200){ 
             this.localFontSize = 1.9;
@@ -63,8 +63,8 @@ export default {
             this.localPad = 1.5;
 
         } else {
-            this.localFontSize = 3;
-            this.localPad = 1.4;
+            this.localFontSize = 5;
+            this.localPad = 2;
 
         }
         },
