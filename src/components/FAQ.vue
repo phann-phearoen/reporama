@@ -1,5 +1,5 @@
 <template>
-    <div class="contain">
+    <div class="contain" id="faq-top">
         <div class="row q-mb-xl">
             <base-badge :label="'よくある質問'" :color="'rgb(150, 131, 229)'" :width="'80%'" :pad="'1.4vw'"></base-badge>
         </div>
