@@ -26,8 +26,6 @@
 
   <div class="contain lt-sm">
     <q-card class="my-card no-shadow">
-      
-        <q-img src="../assets/TOP.png" height="100%" width="100%" />
 
       <div class="row">
         <div class="col-1"></div>
@@ -47,6 +45,9 @@
           </div>
         </div>
       </div>
+
+      <q-img src="../assets/TOP.png" height="100%" width="100%" />
+      
     </q-card>
   </div>
 </template>
