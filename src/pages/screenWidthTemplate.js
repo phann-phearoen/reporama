@@ -11,19 +11,19 @@ methods: {
 },
 watch: {
     screenWidth(val) {
-    if (val > 1600) {
+        if (val > 1600) {
 
-    } else if (val > 1400) {
-       
-    } else if(val > 1200){ 
+        } else if (val > 1400) {
+        
+        } else if(val > 1200){ 
 
-    } else if(val > 1000) {
+        } else if(val > 1000) {
 
-    } else if(val > 500){
+        } else if(val > 500){
 
-    } else {
+        } else {
 
-    }
+        }
     },
 },
 
