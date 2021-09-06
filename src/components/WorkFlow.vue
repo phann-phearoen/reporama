@@ -1,5 +1,5 @@
 <template>
-<div class="contain">
+<div class="contain" id="work-flow-top">
     <div class="row">
         <base-badge :label="'レポラマの流れ'" :color="'rgb(205, 75, 128)'" :width="'80%'" :pad="'1.4vw'"></base-badge>
     </div>

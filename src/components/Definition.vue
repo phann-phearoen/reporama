@@ -1,5 +1,5 @@
 <template>
-    <div class="row badger">
+    <div class="row badger" id="definition-top">
         <base-badge :label="'レポラマとは'" :color="'rgb(205, 75, 128)'" :width="'80%'" :pad="'1.4vw'"></base-badge>
     </div>
 
