@@ -1,7 +1,7 @@
 <template>
 <div class="contain" id="work-flow-top">
     <div class="row">
-        <base-badge :label="'レポラマの流れ'" :color="'rgb(205, 75, 128)'" :width="'80%'" :pad="'1.4vw'"></base-badge>
+        <base-badge :label="'レポラマの流れ'" :color="'rgb(205, 75, 128)'" :width="'80%'"></base-badge>
     </div>
     <div class="row flow">
         <q-img src="../assets/flow.png"></q-img>
