@@ -13,13 +13,13 @@
             <q-img src="../../assets/contribute-merit3.png"></q-img>
         </div>
 
-        <div class="row merit-sm lt-sm">
+        <div class="row merit-sm lt-sm q-pt-md">
             <q-img src="../../assets/contribute-merit1.png"></q-img>
         </div>
         <div class="row merit-sm lt-sm">
             <q-img src="../../assets/contribute-merit2.png"></q-img>
         </div>
-        <div class="row merit-sm lt-sm">
+        <div class="row merit-sm lt-sm q-pb-md">
             <q-img src="../../assets/contribute-merit3.png"></q-img>
         </div>
     </div>
