@@ -1,55 +1,59 @@
 <template>
     <div class="contain" id="price-top">
         <div class="row q-mb-xl">
-            <base-badge :label="'価格'" :color="'rgb(150, 131, 229)'" :width="'80%'" :pad="'1.4vw'"></base-badge>
+            <base-badge :label="'価格'" :color="'rgb(150, 131, 229)'" :width="'80%'"></base-badge>
         </div>
-        <div class="row up-des plain-text">
-            レポラマ用の商品（サンプル）はください。
+        <div class="row up-des plain-text" :style="{ fontSize: plainTextSize + 'vw' }">
+            <div class="col column items-center">
+                レポラマ用の商品（サンプル）はください。
+            </div>
         </div>
-        <div class="row up-des q-pb-lg plain-text">
-            その代わり安価で「レポラマ」を提供します。
+        <div class="row up-des q-pb-lg plain-text" :style="{ fontSize: plainTextSize + 'vw' }">
+            <div class="col column items-center">
+                その代わり安価で「レポラマ」を提供します。
+            </div>
         </div>
 
         <div class="row price">
-            <div class="col-2"></div>
-            <div class="col-4 self-center left plain-text">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-1"></div>
+            <div class="col-xl-4 col-lg-4 col-md-5 col-sm-5 col-xs-6 self-center left plain-text" :style="{ fontSize: plainTextSize + 'vw' }">
                 2,000文字程度のレポート記事
             </div>
-            <div class="col-1 self-center">
-                <q-img src="../../assets/arrow1.png" width="70%"></q-img>
+            <div class="col-1 self-center" :style="{ width: arrowWidth + '%'}">
+                <q-img src="../../assets/arrow1.png"></q-img>
             </div>
-            <div class="col-4 self-center stand-out-text">
+            <div class="col self-center stand-out-text" :style="{ fontSize: standOutSize + 'vw' }">
                 50,000円
             </div>
-            <div class="col-1"></div>
+            <div class="col-1 gt-sm"></div>
         </div>
 
         <div class="row price">
-            <div class="col-2"></div>
-            <div class="col-4 self-center left plain-text">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-1"></div>
+            <div class="col-xl-4 col-lg-4 col-md-5 col-sm-5 col-xs-6 self-center left plain-text" :style="{ fontSize: plainTextSize + 'vw' }">
                 3,000文字程度のレポート記事
             </div>
-            <div class="col-1 self-center">
-                <q-img src="../../assets/arrow1.png" width="70%"></q-img>
+            <div class="col-1 self-center" :style="{ width: arrowWidth + '%'}">
+                <q-img src="../../assets/arrow1.png"></q-img>
             </div>
-            <div class="col-4 self-center stand-out-text">
+            <div class="col self-center stand-out-text" :style="{ fontSize: standOutSize + 'vw' }">
                 70,000円
             </div>
-            <div class="col-1"></div>
+            <div class="col-1 gt-sm"></div>
         </div>
 
         <div class="row price">
-            <div class="col-2"></div>
-            <div class="col-4 self-center left plain-text">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-1"></div>
+            <div class="col-xl-4 col-lg-4 col-md-5 col-sm-5 col-xs-6 self-center left plain-text" :style="{ fontSize: plainTextSize + 'vw' }">
                 5,000文字程度のレポート記事
             </div>
-            <div class="col-1 self-center">
-                <q-img src="../../assets/arrow1.png" width="70%"></q-img>
+            <div class="col-1 self-center" :style="{ width: arrowWidth + '%'}">
+                <q-img src="../../assets/arrow1.png"></q-img>
             </div>
-            <div class="col-4 self-center stand-out-text">
+            <div class="col self-center stand-out-text" :style="{ fontSize: standOutSize + 'vw' }">
                 100,000円
             </div>
-            <div class="col-1"></div>
+            <div class="col-1 gt-sm"></div>
         </div>
 
         <div class="row table">
@@ -62,8 +66,8 @@
                     <q-separator />
 
                     <q-card-actions vertical>
-                        <div><span class="plain-text">・salvia掲載希望</span><span class="stand-out-text">＋50,000円</span></div>
-                        <div><span class="plain-text">・プレゼント企画連動 </span><span class="small-text">※規模によって別途相談</span></div>
+                        <div><span class="plain-text" :style="{ fontSize: plainTextSize + 'vw' }">・salvia掲載希望</span><span class="stand-out-text" :style="{ fontSize: standOutSize + 'vw' }">＋50,000円</span></div>
+                        <div><span class="plain-text" :style="{ fontSize: plainTextSize + 'vw' }">・プレゼント企画連動 </span><span class="small-text">※規模によって別途相談</span></div>
                     </q-card-actions>
                 </q-card>
             </div>
@@ -84,7 +88,53 @@
 import BaseBadge from '../base/BaseBadge.vue';
 
 export default {
-    components: { BaseBadge, }
+    components: { BaseBadge, },
+    data() {
+        return {
+            screenWidth: 0, 
+            plainTextSize: 0,
+            arrowWidth: 0,
+            standOutSize: 0,
+        }
+    },
+    methods: {
+        handleResize() {
+        this.screenWidth = window.innerWidth;
+        },
+    },
+    watch: {
+        screenWidth(val) {
+            if (val > 1600) {
+                this.plainTextSize = 2;
+                this.arrowWidth = 4;
+                this.standOutSize = 2.5;
+            } else if (val > 1400) {
+            
+            } else if(val > 1200){ 
+
+            } else if(val > 1000) {
+                this.plainTextSize = 2.5;
+                this.arrowWidth = 5;
+                this.standOutSize = 3;
+            } else if(val > 500){
+                this.plainTextSize = 3;
+                this.arrowWidth = 5;
+                this.standOutSize = 3.5
+            } else {
+                this.plainTextSize = 3.7;
+                this.arrowWidth = 6.5;
+                this.standOutSize = 4.2;
+            }
+        },
+    },
+
+    created() {
+        window.addEventListener("resize", this.handleResize);
+        this.handleResize();
+    },
+    unmounted() {
+        window.removeEventListener("resize", this.handleResize);
+    },
 }
 </script>
 
@@ -96,7 +146,6 @@ export default {
 .up-des{
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
 }
 
 .small-text{
@@ -104,19 +153,19 @@ export default {
     color: grey;
 }
 .plain-text{
-    font-size: 2vw;
     color: grey;
 }
 .stand-out-text{
     font-size: 2.4vw;
     font-weight: 600;
     color: rgb(150, 131, 229);
+    margin-left: 1.5vw;
 }
 .price{
     margin: 0 auto;
 }
 .left{
-    margin-left: 4vw;
+    margin-left: auto;
 }
 
 .table{
