@@ -118,13 +118,13 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="q-pa-md label">
                         <q-radio v-model="postConsents" val="true" label="はい" class="q-mr-xl"/>
                         <q-radio v-model="postConsents" val="false" label="いいえ" />
                     </div>
                 </div>
-                <div class="col-7 q-pa-md label">
+                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-xs-12 q-pa-md label">
                     ※明らかに salvia のサイトコンセプトに反する記事は、
                     　自社メディアの掲載とさせていただきます。
                 </div>
@@ -158,14 +158,14 @@
         />
 
         <div class="row">
-            <q-btn class="submit" outline type="submit" style="color: rgb(205, 75, 128)" label="送信" />
+            <q-btn class="submit" outline type="submit" style="color: rgb(205, 75, 128)" >送　信</q-btn>
         </div>
     </q-form>
 
     <div class="row">
         <div class="col"></div>
-        <div class="col-1">
-            <q-img @click="toTop" src="../assets/PAGE-TOP.png" class="to-top" width="80%"></q-img>   
+        <div class="col-1 q-mr-sm" :style="{ width: toTopWidth + '%' }">
+            <q-img @click="toTop" src="../assets/PAGE-TOP.png" class="to-top" ></q-img>   
         </div>
     </div>
 
@@ -191,6 +191,8 @@ export default {
             inquiry: '',
             screenWidth: 0, 
             formWidth: 0,
+            toTopWidth: 0,
+            toTopMarginRight: null,
         }
     },
     methods: {
@@ -208,17 +210,22 @@ export default {
         screenWidth(val) {
             if (val > 1600) {
                 this.formWidth = 55
+                this.toTopWidth = 6
             } else if (val > 1400) {
                 this.formWidth = 60
+                this.toTopWidth = 6
             } else if(val > 1200){ 
                 this.formWidth = 65
+                this.toTopWidth = 7
             } else if(val > 1000) {
                 this.formWidth = 65
+                this.toTopWidth = 10
             } else if(val > 500){
                 this.formWidth = 70
-
+                this.toTopWidth = 10
             } else {
                 this.formWidth = 90
+                this.toTopWidth = 15
             }
         },
     },
@@ -245,11 +252,8 @@ export default {
 }
 .submit{
     margin: .5vw auto -.5vw;
-    font-size: 1vw;
-    padding: 0 2.5vw;
 }
 .to-top{
-    width: 80vw;
     margin-top: -4vw;
     margin-bottom: -1vw;
     cursor: pointer;
