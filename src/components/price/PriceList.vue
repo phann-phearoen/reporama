@@ -56,26 +56,26 @@
             <div class="col-1 gt-sm"></div>
         </div>
 
-        <div class="row table">
+        <div class="row table" :style="{ width: tableWidth + '%'}">
             <div class="col">
                 <q-card class="my-card">
                     <q-card-section style="background-color: rgb(150, 131, 229)">
-                        <div class="text-h3 text-white text-center">オプション</div>
+                        <div class="text-white text-center" :style="{ fontSize: tableCaptionSize + 'vw'}">オプション</div>
                     </q-card-section>
 
                     <q-separator />
 
                     <q-card-actions vertical>
                         <div><span class="plain-text" :style="{ fontSize: plainTextSize + 'vw' }">・salvia掲載希望</span><span class="stand-out-text" :style="{ fontSize: standOutSize + 'vw' }">＋50,000円</span></div>
-                        <div><span class="plain-text" :style="{ fontSize: plainTextSize + 'vw' }">・プレゼント企画連動 </span><span class="small-text">※規模によって別途相談</span></div>
+                        <div><span class="plain-text" :style="{ fontSize: plainTextSize + 'vw' }">・プレゼント企画連動 </span><span class="small-text" :style="{ fontSize: smallTextSize + 'vw' }">※規模によって別途相談</span></div>
                     </q-card-actions>
                 </q-card>
             </div>
         </div>
         
         <div class="row">
-            <div class="col-6"></div>
-            <div class="col">
+            <div class="col-xl-6 col-lg-6 col-md-4 col-sm-4 col-xs-3"></div>
+            <div class="col" :style="{ fontSize: smallTextSize + 'vw' }">
                 <div class="small-text">※商品の郵送代は別途請求いたします。</div>
                 <div class="small-text">※レポート期間が数日以上の場合、別途ご相談ください。</div>
                 <div class="small-text">※商品サンプルを頂戴できない場合、別途ご相談ください。</div>
@@ -95,6 +95,9 @@ export default {
             plainTextSize: 0,
             arrowWidth: 0,
             standOutSize: 0,
+            tableWidth: 0,
+            tableCaptionSize: 0,
+            smallTextSize: 0,
         }
     },
     methods: {
@@ -108,6 +111,9 @@ export default {
                 this.plainTextSize = 2;
                 this.arrowWidth = 4;
                 this.standOutSize = 2.5;
+                this.tableWidth = 50;
+                this.tableCaptionSize = 3;
+                this.smallTextSize = 1.1
             } else if (val > 1400) {
             
             } else if(val > 1200){ 
@@ -116,14 +122,23 @@ export default {
                 this.plainTextSize = 2.5;
                 this.arrowWidth = 5;
                 this.standOutSize = 3;
+                this.tableWidth = 60;
+                this.tableCaptionSize = 3.5;
+                this.smallTextSize = 2;
             } else if(val > 500){
                 this.plainTextSize = 3;
                 this.arrowWidth = 5;
-                this.standOutSize = 3.5
+                this.standOutSize = 3.5;
+                this.tableWidth = 60;
+                this.tableCaptionSize = 4.5;
+                this.smallTextSize = 2.2;
             } else {
                 this.plainTextSize = 3.7;
                 this.arrowWidth = 6.5;
-                this.standOutSize = 4.2;
+                this.standOutSize = 4.3;
+                this.tableWidth = 80
+                this.tableCaptionSize = 5.5;
+                this.smallTextSize = 2.7;
             }
         },
     },
@@ -149,7 +164,6 @@ export default {
 }
 
 .small-text{
-    font-size: 1.1vw;
     color: grey;
 }
 .plain-text{
@@ -170,7 +184,6 @@ export default {
 
 .table{
     margin: 3vw auto;
-    width: 38%;
 }
 
 </style>
