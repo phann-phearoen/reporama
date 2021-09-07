@@ -176,9 +176,6 @@ export default {
     display: inline-block;
     margin-top: 1vw;
 }
-.cross{
-    
-}
 .grow{
     flex-grow: 1;
 }
