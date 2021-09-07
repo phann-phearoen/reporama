@@ -7,7 +7,7 @@ export default{
     },
     methods: {
         handleResize() {
-        this.screenWidth = window.innerWidth;
+            this.screenWidth = window.innerWidth;
         },
     },
     watch: {

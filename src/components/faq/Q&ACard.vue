@@ -47,13 +47,15 @@ export default {
     watch: {
         screenWidth(val) {
             if (val > 1600) {
-                this.leadFontSize = 3
-                this.detailFontSize = 1.5
+                this.leadFontSize = 2.8
+                this.detailFontSize = 1.3
 
             } else if (val > 1400) {
-            
+                this.leadFontSize = 2.8
+                this.detailFontSize = 1.3
             } else if(val > 1200){ 
-
+                this.leadFontSize = 2.8
+                this.detailFontSize = 1.3
             } else if(val > 1000) {
                 this.leadFontSize = 4.5
                 this.detailFontSize = 2.5

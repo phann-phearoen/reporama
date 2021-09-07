@@ -131,9 +131,13 @@ export default {
                 this.plainTextSize = 1.3
                 this.crossWidth = 3
             } else if (val > 1400) {
-            
+                this.tableWidth = 75
+                this.plainTextSize = 1.3
+                this.crossWidth = 3
             } else if(val > 1200){ 
-
+                this.tableWidth = 75
+                this.plainTextSize = 1.3
+                this.crossWidth = 3
             } else if(val > 1000) {
                 this.tableWidth = 85
                 this.plainTextSize = 2

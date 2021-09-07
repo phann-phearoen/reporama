@@ -115,9 +115,19 @@ export default {
                 this.tableCaptionSize = 3;
                 this.smallTextSize = 1.1
             } else if (val > 1400) {
-            
+                this.plainTextSize = 2;
+                this.arrowWidth = 4;
+                this.standOutSize = 2.5;
+                this.tableWidth = 50;
+                this.tableCaptionSize = 3;
+                this.smallTextSize = 1.1
             } else if(val > 1200){ 
-
+                this.plainTextSize = 2;
+                this.arrowWidth = 4;
+                this.standOutSize = 2.5;
+                this.tableWidth = 50;
+                this.tableCaptionSize = 3;
+                this.smallTextSize = 1.1
             } else if(val > 1000) {
                 this.plainTextSize = 2.5;
                 this.arrowWidth = 5;

@@ -127,9 +127,13 @@ export default {
                 this.arrowPad = 1;
                 this.textFontSize = 1.7;
             } else if (val > 1400) {
-            
+                this.pointWidth = 100;
+                this.arrowPad = 1;
+                this.textFontSize = 1.7;
             } else if(val > 1200){ 
-
+                this.pointWidth = 100;
+                this.arrowPad = 1;
+                this.textFontSize = 1.7;
             } else if(val > 1000) {
                 this.pointWidth = 100;
                 this.arrowPad = 1;
