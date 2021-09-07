@@ -39,8 +39,10 @@
             <div class="des-plain" :style="{ fontSize: abbreFontSize + 'vw'}"><span class="des-purplish">「レポート記事作成サービス」</span>です。</div>
         </div>
         <div class="col-7 self-center lt-sm">
-            <div class="des-plain" :style="{ fontSize: abbreFontSize + 'vw'}">の頭文字からレポラマと名付けた</div>
-            <div class="des-plain" :style="{ fontSize: abbreFontSize + 'vw'}"><span class="des-purplish">「レポート記事作成サービス」</span>です。</div>
+            <div class="des-plain" :style="{ fontSize: lineListFontSize + 'vw'}">の頭文字からレポラマと名付けた
+                <span class="des-purplish">「レポート記事作成サービス」</span>
+                です。
+            </div>
         </div>
     </div>
 
@@ -169,9 +171,9 @@ export default {
             this.desFontSize = 2.7;
             this.abbreFontSize = 3;
 
-            this.plainFontSize = 4;
+            this.plainFontSize = 4.5;
 
-            this.lineListFontSize = 3;
+            this.lineListFontSize = 4;
         }
         },
     },
