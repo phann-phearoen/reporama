@@ -1,11 +1,11 @@
 <template>
     <div class="contain" id="faq-top">
         <div class="row q-mb-xl">
-            <base-badge :label="'よくある質問'" :color="'rgb(150, 131, 229)'" :width="'80%'" :pad="'1.4vw'"></base-badge>
+            <base-badge :label="'よくある質問'" :color="'rgb(150, 131, 229)'" :width="'80%'"></base-badge>
         </div>
 
-        <div class="row qna" style="width: 80%">
-            <q-list bordered class="list rounded-borders col-12">
+        <div class="row qna">
+            <q-list bordered class="list rounded-borders col-sm-9 col-xs-11">
                 <q-and-a
                 v-for="(qna, index) in qnaList"
                 :key="index"
@@ -71,5 +71,7 @@ export default {
 .qna{
     margin: 0 auto;
 }
-
+.list{
+    margin: 0 auto;
+}
 </style>
