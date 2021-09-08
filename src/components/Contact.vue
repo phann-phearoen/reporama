@@ -11,37 +11,47 @@
         <q-input class="input"
             ref="nameRef"
             outlined
-            v-model="name"
+            v-model="name.value"
             label="お名前"
             hint="必須"
-            :rules="validateName"
+            @blur="validateName"
+            :error="name.isValid===false"
+            error-message="お名前を入力してください。"
         />
 
         <q-input class="input"
             ref="comRef"
             outlined
-            v-model="company"
+            v-model="company.value"
             label="会社名"
             hint="必須"
-            :rules="validateCompany"
+            @blur="validateCom"
+            :error="company.isValid===false"
+            error-message="会社名を入力してください。"
         />
 
         <q-input class="input"
             ref="emailRef"
             outlined
-            v-model="email"
+            v-model="email.value"
             label="メールアドレス"
             hint="必須"
-            :rules="validateEmail"
+            @keyup="validateEmail"
+            @blur="validateEmail"
+            :error="email.isValid===false"
+            error-message="正しいアドレスを入力してください。"
         />
 
         <q-input class="input"
             ref="phoneRef"
             outlined
-            v-model="phone"
+            v-model="phone.value"
             label="電話番号"
             mask="###-####-####"
-            :rules="validatePhone"
+            @keyup="validatePhone"
+            @blur="validatePhone"
+            :error="phone.isValid===false"
+            error-message="正しい電話番号を入力してください。"
         />
 
         <div class="plan input">
@@ -156,10 +166,12 @@
             class="input"
             outlined
             type="textarea"
-            v-model="inquiry"
+            v-model="inquiry.value"
             label="お問い合わせの内容"
             hint="必須"
-            :rules="validateInquiry"
+            @blur="validateInquiry"
+            :error="inquiry.isValid===false"
+            error-message="お問い合わせ内容を入力してください。"
         />
 
         <div class="row">
@@ -183,22 +195,14 @@ export default {
     components: { BaseBadge, },
     data() {
         return {
-            name: '',
-            validateName: [ val => val && val.length > 0 || 'お名前を入力してください。' ],
+            name: { value: '', isValid: null },
 
-            company: '',
-            validateCompany: [ val => val && val.length > 0 || '会社名を入力してください。' ],
+            company: { value: '', isValid: null },
+            
+            email: { value: '', isValid: null},
 
-            email: null,
-            validateEmail: [
-                val => (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(val)) || '正しいアドレスを入力してください。'
-            ],
-
-            phone: null,
-            validatePhone: [
-                val => (val.match(/^0\d{1,4}-\d{1,4}-\d{3,4}$/)) || '正しい電話番号を入力してください。'
-            ],
-
+            phone: { value: '', isValid: null },
+           
             wordCount: null,
             articleCount: {
                 choice1: null, choice2: null, choice3: null
@@ -211,9 +215,8 @@ export default {
             kikakuConsents: null,
             kikakuConsentsIsValid: null,
 
-            inquiry: '',
-            validateInquiry: [ val => val && val.length > 0 || 'お問い合わせ内容を入力してください。'],
-            
+            inquiry: { value: '', isValid: null },
+              
             screenWidth: 0, 
             formWidth: 0,
             toTopWidth: 0,
@@ -230,7 +233,30 @@ export default {
         handleResize() {
             this.screenWidth = window.innerWidth;
         },
-
+        validateName() {
+            if (this.name.value !== '')
+                this.name.isValid = true
+            else
+                this.name.isValid = false
+        },
+        validateCom() {
+            if (this.company.value !== '')
+                this.company.isValid = true
+            else
+                this.company.isValid = false
+        },
+        validateEmail() {
+            if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(this.email.value))
+                this.email.isValid = true
+            else
+                this.email.isValid = false
+        },
+        validatePhone() {
+            if (this.phone.value.match(/^0\d{1,4}-\d{1,4}-\d{3,4}$/))
+                this.phone.isValid = true
+            else
+                this.phone.isValid = false
+        },
         validateAppPlan() {
             if (this.wordCount && (this.articleCount.choice1 || this.articleCount.choice2 || this.articleCount.choice3))
                 this.appPlanIsValid = true;
@@ -249,8 +275,34 @@ export default {
             else
                 this.kikakuConsentsIsValid = false;
         },
+        validateInquiry() {
+            if (this.inquiry.value !== '')
+                this.inquiry.isValid = true
+            else
+                this.inquiry.isValid = false
+        },
         onSubmit() {
+            this.validateName()
+            this.validateCom()
+            this.validateEmail()
+            this.validatePhone()
+            this.validateAppPlan()
+            this.validatePostConsents()
+            this.validateKikakuConsents()
+            this.validateInquiry()
+
+            let target = document.getElementById('contact-top');
             
+            if(this.name.isValid && this.company.isValid && this.email.isValid && this.appPlanIsValid && this.postConsentsIsValid && this.kikakuConsentsIsValid && this.inquiry.isValid){
+                alert('valid')
+
+                window.scrollTo({ top: target.offsetTop - 100, left: 0, behavior: 'smooth'});
+            }
+            else{
+                alert('invalid')
+                
+                window.scrollTo({ top: target.offsetTop + 60, left: 0, behavior: 'smooth'});
+            }
             
         },
     },
