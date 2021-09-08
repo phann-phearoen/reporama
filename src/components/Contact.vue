@@ -1,4 +1,17 @@
 <template>
+
+    <q-dialog v-model="alert">
+      <q-card class="alert-card">
+        <q-card-section class="success">
+          メール送信しました。
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="閉じる" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
 <div class="contain" id="contact-top">
     <div class="row">
         <base-badge :label="'お問い合わせ'" :color="'rgb(205, 75, 128)'" :width="'80%'"></base-badge>
@@ -9,6 +22,7 @@
     class="form" :style="{ width: formWidth + '%' }"
     >
         <q-input class="input"
+            name="user_name"
             ref="nameRef"
             outlined
             v-model="name.value"
@@ -20,6 +34,7 @@
         />
 
         <q-input class="input"
+            name="user_company"
             ref="comRef"
             outlined
             v-model="company.value"
@@ -31,6 +46,7 @@
         />
 
         <q-input class="input"
+            name="user_email"
             ref="emailRef"
             outlined
             v-model="email.value"
@@ -43,6 +59,7 @@
         />
 
         <q-input class="input"
+            name="user_phone"
             ref="phoneRef"
             outlined
             v-model="phone.value"
@@ -64,6 +81,7 @@
                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-xs-11 self-center">
                     <div class="label">
                         <q-radio
+                        name="word_count"
                         type="radio"
                         v-model="wordCount"
                         val="2000"
@@ -73,6 +91,7 @@
                 </div>
                 <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-11 q-mt-sm" style="display: inline-block">
                     <q-input
+                        name="article_count"
                         outlined
                         v-model="articleCount.choice1"
                         type="number"
@@ -85,6 +104,7 @@
                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-xs-11 self-center">
                     <div class="label">
                         <q-radio
+                        name="word_count"
                         type="radio"
                         v-model="wordCount"
                         val="3000"
@@ -94,6 +114,7 @@
                 </div>
                 <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-11 q-mt-sm" style="display: inline-block">
                     <q-input
+                        name="article_count"
                         outlined
                         v-model="articleCount.choice2"
                         type="number"
@@ -106,6 +127,7 @@
                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 col-xs-11 self-center">
                     <div class="label">
                         <q-radio
+                        name="word_count"
                         type="radio"
                         v-model="wordCount"
                         val="5000"
@@ -115,6 +137,7 @@
                 </div>
                 <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-11 q-mt-sm" style="display: inline-block">
                     <q-input
+                        name="article_count"
                         outlined
                         v-model="articleCount.choice3"
                         type="number"
@@ -134,8 +157,8 @@
             <div class="row">
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
                     <div class="q-pa-md label">
-                        <q-radio v-model="postConsents" val="true" label="はい" class="q-mr-xl"/>
-                        <q-radio v-model="postConsents" val="false" label="いいえ" />
+                        <q-radio name="post_consent" v-model="postConsents" val="はい" label="はい" class="q-mr-xl"/>
+                        <q-radio name="post_consent" v-model="postConsents" val="いいえ" label="いいえ" />
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-xs-12 q-pa-md label">
@@ -154,14 +177,15 @@
             <div class="row">
                 <div class="col">
                     <div class="q-pa-md label">
-                        <q-radio v-model="kikakuConsents" val="true" label="はい" class="q-mr-xl"/>
-                        <q-radio v-model="kikakuConsents" val="false" label="いいえ" />
+                        <q-radio name="kikaku_consent" v-model="kikakuConsents" val="はい" label="はい" class="q-mr-xl"/>
+                        <q-radio name="kikaku_consent" v-model="kikakuConsents" val="いいえ" label="いいえ" />
                     </div>
                 </div>
             </div>
         </div>
 
         <q-input
+            name="inquiry"
             ref="inqRef"
             class="input"
             outlined
@@ -191,6 +215,11 @@
 
 <script>
 import BaseBadge from './base/BaseBadge.vue';
+
+import emailjs from "emailjs-com";
+import { init } from "emailjs-com";
+init("user_VtX1Olx5DpcWVsjca1cFM");
+
 export default {
     components: { BaseBadge, },
     data() {
@@ -222,6 +251,7 @@ export default {
             toTopWidth: 0,
             toTopMarginRight: null,
 
+            alert: null,
         }
     },
     computed: {
@@ -252,7 +282,7 @@ export default {
                 this.email.isValid = false
         },
         validatePhone() {
-            if (this.phone.value.match(/^0\d{1,4}-\d{1,4}-\d{3,4}$/))
+            if (this.phone.value.match(/^0\d{1,4}-\d{1,4}-\d{3,4}$/) || this.phone.value === '')
                 this.phone.isValid = true
             else
                 this.phone.isValid = false
@@ -281,7 +311,8 @@ export default {
             else
                 this.inquiry.isValid = false
         },
-        onSubmit() {
+
+        onSubmit(e) {
             this.validateName()
             this.validateCom()
             this.validateEmail()
@@ -292,9 +323,39 @@ export default {
             this.validateInquiry()
 
             let target = document.getElementById('contact-top');
-            
-            if(this.name.isValid && this.company.isValid && this.email.isValid && this.appPlanIsValid && this.postConsentsIsValid && this.kikakuConsentsIsValid && this.inquiry.isValid){
-                alert('valid')
+
+            if(this.name.isValid && this.company.isValid && 
+            this.email.isValid && this.appPlanIsValid && 
+            this.postConsentsIsValid && this.kikakuConsentsIsValid && this.inquiry.isValid){
+                
+                emailjs
+                .sendForm(
+                    "service-mamasuku",
+                    "template_reporama",
+                    e.target,
+                    "user_VtX1Olx5DpcWVsjca1cFM"
+                )
+                .then(
+                    (result) => {
+                        console.log("SUCCESS!", result.status, result.text)
+                        this.alert = true
+                        this.name.value = ''
+                        this.company.value = ''
+                        this.email.value = ''
+                        this.phone.value = ''
+                        this.wordCount = null
+                        this.articleCount.choice1 = ''
+                        this.articleCount.choice2 = ''
+                        this.articleCount.choice3 = ''
+                        this.postConsents = null
+                        this.kikakuConsents = null
+                        this.inquiry.value = ''
+                    },
+                    (error) => {
+                        console.log("FAILED...", error);
+                        this.alert = false
+                    }
+                );
 
                 window.scrollTo({ top: target.offsetTop - 100, left: 0, behavior: 'smooth'});
             }
@@ -360,5 +421,13 @@ export default {
 }
 .input{
     margin-top: 2vw;
+}
+.alert-card{
+    min-width: 250px;
+    min-height: 100px;
+}
+.success{
+    color: rgb(205, 75, 128);
+    margin: 1.75vw auto 1vw .5vw;
 }
 </style>
