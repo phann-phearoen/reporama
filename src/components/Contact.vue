@@ -89,8 +89,18 @@
                         />
                     </div>
                 </div>
-                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-11 q-mt-sm" style="display: inline-block">
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-11 q-mt-sm" >
                     <q-input
+                        v-if="wordCount===null || wordCount==='2000'"
+                        name="article_count"
+                        outlined
+                        v-model="articleCount.choice1"
+                        type="number"
+                        suffix="本"
+                    />
+                    <q-input
+                        v-else
+                        disable
                         name="article_count"
                         outlined
                         v-model="articleCount.choice1"
@@ -112,8 +122,18 @@
                         />
                     </div>
                 </div>
-                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-11 q-mt-sm" style="display: inline-block">
-                    <q-input
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-11 q-mt-sm" >
+                    <q-input 
+                        v-if="wordCount===null || wordCount==='3000'"
+                        name="article_count"
+                        outlined
+                        v-model="articleCount.choice2"
+                        type="number"
+                        suffix="本"
+                    />
+                    <q-input 
+                        v-else
+                        disable
                         name="article_count"
                         outlined
                         v-model="articleCount.choice2"
@@ -135,8 +155,18 @@
                         />
                     </div>
                 </div>
-                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-11 q-mt-sm" style="display: inline-block">
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-11 q-mt-sm" >
                     <q-input
+                        v-if="wordCount===null || wordCount==='5000'"
+                        name="article_count"
+                        outlined
+                        v-model="articleCount.choice3"
+                        type="number"
+                        suffix="本"
+                    />
+                    <q-input
+                        v-else
+                        disable
                         name="article_count"
                         outlined
                         v-model="articleCount.choice3"
@@ -233,6 +263,10 @@ export default {
             phone: { value: '', isValid: null },
            
             wordCount: null,
+            disabled1: null,
+            disabled2: null,
+            disabled3: null,
+
             articleCount: {
                 choice1: null, choice2: null, choice3: null
             },
