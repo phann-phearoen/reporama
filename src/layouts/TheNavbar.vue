@@ -24,7 +24,7 @@
 
         <q-btn icon="menu" class="lt-md no-shadow q-ml-xl">
             <q-menu auto-close>
-                <q-list style="min-width: 300px">
+                <q-list style="min-width: 300px; color: grey">
                     <q-item clickable @click="toDefinition">
                         <q-item-section>レポラマとは</q-item-section>
                     </q-item>
