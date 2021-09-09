@@ -1,5 +1,5 @@
 <template>
-    <q-card class="my-card">
+    <q-card class="my-card gt-xs">
       <q-card-section>
         <hr class="purplish-line" :style="{ height: lineHeight + 'px' }">
       </q-card-section>
@@ -14,7 +14,7 @@
                     <div class="row description" :style="{ fontSize: desSize + 'vw' }">
                         {{ des }}
                     </div>
-                    <div class="row">
+                    <div class="row gt-sm">
                         <div class="col-3 bottom-right left">
                             <base-badge 
                             :label="'記事テストのご参考'"
@@ -24,7 +24,7 @@
                             >
                             </base-badge>
                         </div>
-                        <div class="col bottom-right right gt-xs">
+                        <div class="col bottom-right right">
                             <ul>
                                 <li v-for="link in links" :key="link">
                                     <a :href="link.ref" target="_blank" class="link" :style="{ fontSize: linkSize + 'vw' }">{{ link.text }}</a>
@@ -34,14 +34,62 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row bottom-right right lt-sm">
-                <ul>
-                    <li v-for="link in links" :key="link">
-                    <a :href="link.ref" target="_blank" class="link" :style="{ fontSize: linkSize + 'vw' }">{{ link.text }}</a>
-                    </li>
-                </ul>
+      </q-card-section>
+      <q-card-section class="lt-md">
+        <div class="row">
+            <div class="col column items-center">
+                <base-badge 
+                :label="'記事テストのご参考'"
+                :color="'rgb(150, 131, 229)'" 
+                :pad="badgePad"
+                :fontSize="badgeFontSize"
+                >
+                </base-badge>
             </div>
+        </div>
+        <div class="row">
+            <ul>
+                <li v-for="link in links" :key="link">
+                    <a :href="link.ref" target="_blank" class="link" :style="{ fontSize: linkSize + 'vw' }">{{ link.text }}</a>
+                </li>
+            </ul>
+        </div>
+      </q-card-section>
+    </q-card>
+
+    <q-card class="my-card lt-sm" style="width: 95%">
+      <q-card-section>
+        <hr class="purplish-line" :style="{ height: lineHeight + 'px' }">
+      </q-card-section>
+
+      <q-card-section>
+        <div class="column items-center">
+            <q-img :src="src" :style="{ width: avatarWidth + '%' }"></q-img>
+            <div class="name" :style="{ fontSize: nameSize + 'vw' }">{{ name }}</div>
+        </div>
+      </q-card-section>
+
+      <q-card-section>
+            
+        <div class="row description" :style="{ fontSize: desSize + 'vw' }">
+            {{ des }}
+        </div>
+        <div class="row q-mt-md">
+            <base-badge 
+            :label="'記事テストのご参考'"
+            :color="'rgb(150, 131, 229)'" 
+            :pad="badgePad"
+            :fontSize="badgeFontSize"
+            >
+            </base-badge>
+        </div>
+        <div class="">
+            <ul>
+                <li v-for="link in links" :key="link">
+                    <a :href="link.ref" target="_blank" class="link" :style="{ fontSize: linkSize + 'vw' }" style="margin-left: -2vw">{{ link.text }}</a>
+                </li>
+            </ul>
+        </div>
       </q-card-section>
     </q-card>
 </template>
@@ -94,7 +142,7 @@ export default {
                 this.desSize = 1;
                 this.linkSize = 1;
             } else if(val > 1000) {
-                this.badgeFontSize = 1.3;
+                this.badgeFontSize = 1.2;
                 this.avatarWidth = 100;
                 this.lineHeight = 2.5;
                 this.nameSize = 2.5;
@@ -108,12 +156,13 @@ export default {
                 this.desSize = 2.5;
                 this.linkSize = 2.5;
             } else {
-                this.badgeFontSize = 2;
+                this.badgeFontSize = 4;
+                this.badgePad = 4;
                 this.lineHeight = 1.2;
-                this.avatarWidth = 110;
-                this.nameSize = 3.2;
-                this.desSize = 3;
-                this.linkSize = 3;
+                this.avatarWidth = 70;
+                this.nameSize = 5;
+                this.desSize = 4;
+                this.linkSize = 4;
             }
         },
     },
@@ -151,7 +200,6 @@ export default {
 .link{
     text-decoration: none;
     color: rgb(150, 131, 229);
-    font-size: 1vw;
 }
 
 ul {

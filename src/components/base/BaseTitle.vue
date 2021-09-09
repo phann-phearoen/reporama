@@ -38,12 +38,12 @@ export default {
             this.pinkyMarginTop = 1.5;
         } else if(val > 1000) {
             this.pinkyHeight = 2;
-            this.titleFontSize = 2;
-            this.pinkyMarginTop = 1.5;
+            this.titleFontSize = 2.5;
+            this.pinkyMarginTop = 1.6;
         } else if(val > 500){
             this.pinkyHeight = 2;
-            this.titleFontSize = 2;
-            this.pinkyMarginTop = 1.5;
+            this.titleFontSize = 2.7;
+            this.pinkyMarginTop = 1.8;
         } else {
             this.pinkyHeight = 1.5;
             this.titleFontSize = 4.5;

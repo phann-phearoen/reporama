@@ -1,5 +1,5 @@
 <template>
-    <q-footer class="bg-white text-grey footer" :style="{ heigth: footerHeight + 'px' }">
+    <q-footer class="bg-white text-grey footer">
 
         <q-list style="min-width: 300px" class="lt-sm q-pt-md q-pb-md bg-grey-3 sns">
             <div class="row lt-md">
@@ -54,7 +54,6 @@ export default {
             mainFontSize: null,
             subFontSize: null,
             crFontSize: null,
-            footerHeight: null,
         }
     },
     methods: {
@@ -68,32 +67,26 @@ export default {
                 this.mainFontSize = 2.5
                 this.subFontSize = 1
                 this.crFontSize = 1
-                this.footerHeight = 260
             } else if (val > 1400) {
                 this.mainFontSize = 2.8
                 this.subFontSize = 1.1
                 this.crFontSize = 1.1
-                this.footerHeight = 240
             } else if(val > 1200){ 
                 this.mainFontSize = 3
                 this.subFontSize = 1.4
                 this.crFontSize = 1.4
-                this.footerHeight = 220
             } else if(val > 1000) {
                 this.mainFontSize = 3.5
                 this.subFontSize = 1.8
                 this.crFontSize = 1.8
-                this.footerHeight = 200
             } else if(val > 500){
                 this.mainFontSize = 4
                 this.subFontSize = 2
                 this.crFontSize = 2
-                this.footerHeight = 200
             } else {
                 this.mainFontSize = 5
                 this.subFontSize = 3
                 this.crFontSize = 3
-                this.footerHeight = 200
             }
         },
     },
@@ -110,6 +103,7 @@ export default {
 
 <style scoped>
 .footer{
+    height: 200px;
     border-top: solid 1px rgb(205, 75, 128);
 }
 .sns{
@@ -139,6 +133,6 @@ export default {
     margin-left: 10vw;
 }
 .copy-right{
-    margin: auto;
+    margin: 0 auto;
 }
 </style>
