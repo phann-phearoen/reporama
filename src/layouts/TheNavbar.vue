@@ -24,22 +24,27 @@
 
         <q-btn icon="menu" class="lt-md no-shadow q-ml-xl">
             <q-menu auto-close>
-                <q-list style="min-width: 300px; color: grey">
+                <q-list class="pop-up">
                     <q-item clickable @click="toDefinition">
                         <q-item-section>レポラマとは</q-item-section>
                     </q-item>
+                    <q-separator color="white"></q-separator>
                     <q-item clickable @click="toIntro">
                         <q-item-section>レポラマ紹介</q-item-section>
                     </q-item>
+                    <q-separator color="white"></q-separator>
                     <q-item clickable @click="toWorkFlow">
                         <q-item-section>レポの流れ</q-item-section>
                     </q-item>
+                    <q-separator color="white"></q-separator>
                     <q-item clickable @click="toPrice">
                         <q-item-section>価格</q-item-section>
                     </q-item>
+                    <q-separator color="white"></q-separator>
                     <q-item clickable @click="toFAQ">
                         <q-item-section>よくある質問</q-item-section>
                     </q-item>
+                    <q-separator color="white"></q-separator>
                     <q-item clickable @click="toContact">
                         <q-item-section>お問い合わせ</q-item-section>
                     </q-item>
@@ -114,5 +119,10 @@ export default {
     cursor: pointer;
     margin-right: 4vw;
     font-size: 1vw;
+}
+.pop-up{
+    min-width: 100vw;
+    color: white;
+    background-color: rgb(205, 75, 128);
 }
 </style>
