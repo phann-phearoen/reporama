@@ -7,7 +7,7 @@
         </q-card-section>
 
         <q-card-actions align="right">
-          <q-btn flat label="閉じる" color="primary" v-close-popup />
+          <q-btn flat label="閉じる" color="primary" v-close-popup @click="toTop"/>
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -285,7 +285,9 @@ export default {
     },
     methods: {
         toTop() {
-            window.scrollTo({ top: 0, left: 0, behavior: 'smooth', });
+            setTimeout(() => {
+                window.scrollTo({ top: 0, left: 0, behavior: 'smooth', });
+            }, 2);
         },
         handleResize() {
             this.screenWidth = window.innerWidth;
@@ -365,7 +367,9 @@ export default {
                 .then(
                     (result) => {
                         console.log("SUCCESS!", result.status, result.text)
+    
                         this.alert = true
+
                         this.name.value = ''
                         this.company.value = ''
                         this.email.value = ''
@@ -383,12 +387,8 @@ export default {
                         this.alert = false
                     }
                 );
-
-                window.scrollTo({ top: target.offsetTop - 100, left: 0, behavior: 'smooth'});
             }
-            else{
-                alert('invalid')
-                
+            else{                
                 window.scrollTo({ top: target.offsetTop + 60, left: 0, behavior: 'smooth'});
             }
             
