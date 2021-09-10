@@ -233,13 +233,6 @@
         </div>
     </q-form>
 
-    <div class="row">
-        <div class="col"></div>
-        <div class="col-1 q-mr-sm" :style="{ width: toTopWidth + '%' }">
-            <q-img @click="toTop" src="../assets/PAGE-TOP.png" class="to-top" ></q-img>   
-        </div>
-    </div>
-
 </div>
 </template>
 
@@ -440,18 +433,13 @@ export default {
     margin: 3vw auto;
 }
 .form{
-    margin: 5vw auto;
+    margin: 3vw auto;
 }
 .label{
     color: grey;
 }
 .submit{
-    margin: .5vw auto -.5vw;
-}
-.to-top{
-    margin-top: -4vw;
-    margin-bottom: -1vw;
-    cursor: pointer;
+    margin: 1vw auto;
 }
 .input{
     margin-top: 2vw;
