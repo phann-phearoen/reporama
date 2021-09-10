@@ -2,7 +2,7 @@
     <base-title :title="'記事例'"></base-title>
     <div class="row contain" id="intro-top">
         <base-card
-        class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12"
+        class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12"
         v-for="(info, index) in introInfo"
         :key="index"
         :link="info.link"
@@ -12,7 +12,7 @@
             </ul>
         </base-card>
 
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12 lone self-end" style="height: 5vw" :style="{ fontSize: desFontSize + 'vw'}">
+        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-xs-12 lone self-end" style="height: 5vw" :style="{ fontSize: desFontSize + 'vw'}">
             <span style="color: rgb(255, 153, 0)">★</span>・・・プレパブ連動企画
         </div>
     </div>
