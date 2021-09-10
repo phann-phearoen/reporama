@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHr lpR lfr">
+  <q-layout view="LHR LPR LfR">
 
     <the-navbar></the-navbar>
 
@@ -74,7 +74,7 @@ export default {
             } else if(val > 1200){ 
                 this.toTopWidth = 6
             } else if(val > 1000) {
-                this.toTopWidth = 10
+                this.toTopWidth = 8
             } else if(val > 500){
                 this.toTopWidth = 10
             } else {
