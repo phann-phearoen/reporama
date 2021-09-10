@@ -11,12 +11,12 @@
     >
       <q-list style="margin-top: 7vw" class="column items-center">
           
-          <a href="https://twitter.com/salvia__mama" style="margin-bottom: 50px" class="twitter social" target="_blank">
-              <q-img src="./assets/twitter-logo-blue.png" width="50px" class="img"></q-img>
+          <a href="https://twitter.com/salvia__mama" style="margin-bottom: 50px" class="twitter social" target="_blank" @mouseover="selectTwitterSrc" @mouseout="normalT">
+              <q-img :src="tsrc" width="50px" class="img"></q-img>
           </a>
           
-          <a href="https://www.instagram.com/salvia_mama/" class="instagram social" target="_blank">
-              <q-img src="./assets/instagram-logo.png" width="45px" class="img"></q-img>
+          <a href="https://www.instagram.com/salvia_mama/" class="instagram social" target="_blank" @mouseover="selectInstaSrc" @mouseout="normalI">
+              <q-img :src="instasrc" width="45px" class="img"></q-img>
           </a>
           
       </q-list>
@@ -55,6 +55,9 @@ export default {
       return {
         screenWidth: 0,
         toTopWidth: 0,
+
+        tsrc: require('./assets/twitter-logo.png'),
+        instasrc: require('./assets/instagram-logo-white.png'),
       }
     },
     methods: {
@@ -64,6 +67,18 @@ export default {
       handleResize() {
           this.screenWidth = window.innerWidth;
       },
+      selectTwitterSrc() {
+        this.tsrc = require('./assets/twitter-logo-blue.png')
+      },
+      selectInstaSrc() {
+        this.instasrc = require('./assets/instagram-logo.png')
+      },
+      normalT(){
+        this.tsrc = require('./assets/twitter-logo.png')
+      },
+      normalI() {
+        this.instasrc = require('./assets/instagram-logo-white.png')
+      }
     },
     watch: {
         screenWidth(val) {
