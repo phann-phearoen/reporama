@@ -65,7 +65,7 @@ export default {
                 this.detailFontSize = 3
             } else {
                 this.leadFontSize = 6
-                this.detailFontSize = 3.5
+                this.detailFontSize = 4 
             }
         },
     },

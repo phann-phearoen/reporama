@@ -234,6 +234,8 @@
     </q-form>
 
 </div>
+
+<div class="row lt-sm" style="height: 50px"></div>
 </template>
 
 <script>

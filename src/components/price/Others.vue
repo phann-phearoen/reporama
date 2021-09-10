@@ -13,7 +13,7 @@
                 以下の商品は取り扱い不可です。
             </div>
             <div class="row q-mt-sm q-gutter-sm">
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-5 grow">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-12 grow">
                     <q-card bordered>
                        <q-card-section>
                            <span>                       
@@ -25,7 +25,7 @@
                        </q-card-section>
                     </q-card>
                 </div>                
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-xs-5 grow">
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-xs-12 grow">
                     <q-card bordered>
                        <q-card-section>
                            <span>                       
@@ -37,7 +37,7 @@
                        </q-card-section>
                     </q-card>
                 </div>
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-xs-5 grow">
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-xs-12 grow">
                     <q-card bordered>
                        <q-card-section>
                            <span>                       
@@ -49,7 +49,7 @@
                        </q-card-section>
                     </q-card>
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-xs-5 grow">
+                <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-xs-12 grow">
                     <q-card bordered>
                        <q-card-section>
                            <span>                       
@@ -62,7 +62,7 @@
                     </q-card>
                 </div>
             
-               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-5 grow">
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-12 grow">
                     <q-card bordered>
                        <q-card-section>
                            <span>                       
@@ -74,7 +74,7 @@
                        </q-card-section>
                     </q-card>
                 </div>                
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-xs-5 grow">
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-xs-12 grow">
                     <q-card bordered>
                        <q-card-section>
                            <span>                       
@@ -86,7 +86,7 @@
                        </q-card-section>
                     </q-card>
                 </div>
-                <div class="col-6 grow">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 grow">
                     <q-card bordered class="">
                        <q-card-section>
                            <span>                       
@@ -148,8 +148,8 @@ export default {
                 this.crossWidth = 3.5
             } else {
                 this.tableWidth = 90
-                this.plainTextSize = 2.9
-                this.crossWidth = 5
+                this.plainTextSize = 4.5
+                this.crossWidth = 6.5
             }
         },
     },
