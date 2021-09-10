@@ -111,9 +111,11 @@ export default {
 <style scoped>
 .twitter:hover{
     background-color: white;
+    border-radius: 10px;
 }
 .instagram:hover{
     background-color: white;
+    border-radius: 10px;
 }
 .social{
     padding: 5px;

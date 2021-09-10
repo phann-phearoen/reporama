@@ -3,12 +3,12 @@
         <div class="row q-mb-xl">
             <base-badge :label="'価格'" :color="'rgb(150, 131, 229)'" :width="'80%'"></base-badge>
         </div>
-        <div class="row up-des plain-text" :style="{ fontSize: plainTextSize + 'vw' }">
+        <div class="row up-des stand-out-text" :style="{ fontSize: plainTextSize + 'vw' }">
             <div class="col column items-center">
                 レポラマ用の商品（サンプル）はください。
             </div>
         </div>
-        <div class="row up-des q-pb-lg plain-text" :style="{ fontSize: plainTextSize + 'vw' }">
+        <div class="row up-des q-pb-lg stand-out-text" :style="{ fontSize: plainTextSize + 'vw' }">
             <div class="col column items-center">
                 その代わり安価で「レポラマ」を提供します。
             </div>
