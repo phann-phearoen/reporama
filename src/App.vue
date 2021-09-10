@@ -27,11 +27,18 @@
     side="right" 
     width="75" 
     style="background-color: rgb(150, 131, 229)">
-     
+      
     </q-drawer>
 
     <q-page-container>
       <router-view></router-view>
+      
+      <q-page-sticky position="bottom-right" :offset="[8, 18]">
+        <q-btn round flat class="" :style="{ width: toTopWidth + 'vw' }">
+          <q-img @click="toTop" src="./assets/PAGE-TOP.png"></q-img>   
+        </q-btn>
+      </q-page-sticky>
+      
     </q-page-container>
 
     <the-footer></the-footer>
@@ -44,7 +51,45 @@ import TheNavbar from './layouts/TheNavbar.vue'
 import TheFooter from './layouts/TheFooter.vue'
 export default {
     components: { TheNavbar, TheFooter, },
-    
+    data() {
+      return {
+        screenWidth: 0,
+        toTopWidth: 0,
+      }
+    },
+    methods: {
+      toTop() {
+          window.scrollTo({ top: 0, left: 0, behavior: 'smooth', });
+      },
+      handleResize() {
+          this.screenWidth = window.innerWidth;
+      },
+    },
+    watch: {
+        screenWidth(val) {
+            if (val > 1600) {
+                this.toTopWidth = 4.5
+            } else if (val > 1400) {
+                this.toTopWidth = 5
+            } else if(val > 1200){ 
+                this.toTopWidth = 6
+            } else if(val > 1000) {
+                this.toTopWidth = 10
+            } else if(val > 500){
+                this.toTopWidth = 10
+            } else {
+                this.toTopWidth = 15
+            }
+        },
+    },
+
+    created() {
+        window.addEventListener("resize", this.handleResize);
+        this.handleResize();
+    },
+    unmounted() {
+        window.removeEventListener("resize", this.handleResize);
+    },
 }
 </script>
 
