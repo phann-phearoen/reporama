@@ -33,12 +33,37 @@
     <q-page-container>
       <router-view></router-view>
       
-      <q-page-sticky position="bottom-right" :offset="[8, 18]">
+      <q-page-sticky position="bottom-right" :offset="[8, 18]" class="gt-xs">
+        <q-btn round flat class="" :style="{ width: toTopWidth + 'vw' }">
+          <q-img @click="toTop" src="./assets/PAGE-TOP.png"></q-img>   
+        </q-btn>
+      </q-page-sticky>
+
+      <q-page-sticky position="bottom-right" :offset="[5, 45]" class="lt-sm">
         <q-btn round flat class="" :style="{ width: toTopWidth + 'vw' }">
           <q-img @click="toTop" src="./assets/PAGE-TOP.png"></q-img>   
         </q-btn>
       </q-page-sticky>
       
+      <q-page-sticky position="bottom" :offset="[0]">
+        <q-list class="lt-sm sns">
+            <div class="row lt-md">
+                <div class="col-3"></div>
+                <div class="col column items-center q-mt-sm q-mb-sm">
+                    <a href="https://twitter.com/salvia__mama" target="_blank">
+                        <q-img :src="tsrc" width="30px"></q-img>
+                    </a>
+                </div>
+                <div class="col column items-center q-mt-sm q-mb-sm">
+                    <a href="https://www.instagram.com/salvia_mama/" target="_blank">
+                        <q-img :src="instasrc" width="25px"></q-img>
+                    </a>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </q-list>
+      </q-page-sticky>
+
     </q-page-container>
 
     <the-footer></the-footer>
@@ -111,12 +136,18 @@ export default {
 <style scoped>
 .twitter:hover{
     background-color: white;
+    border-radius: 10px;
 }
 .instagram:hover{
     background-color: white;
+    border-radius: 10px;
 }
 .social{
     padding: 5px;
     border-radius: 5px;
+}
+.sns{
+  background-color: rgb(205, 75, 128);
+  min-width: 500px;
 }
 </style>

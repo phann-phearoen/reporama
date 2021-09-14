@@ -124,6 +124,7 @@ export default {
                 this.badgePad = 1;
                 this.badgeFontSize = 1;
                 this.avatarWidth = 90;
+                this.lineHeight = 2;
                 this.nameSize = 1;
                 this.desSize = 1;
                 this.linkSize = 1;
@@ -131,6 +132,7 @@ export default {
                 this.badgePad = 1;
                 this.badgeFontSize = 1;
                 this.avatarWidth = 90;
+                this.lineHeight = 2;
                 this.nameSize = 1;
                 this.desSize = 1;
                 this.linkSize = 1;
@@ -138,6 +140,7 @@ export default {
                 this.badgePad = 1;
                 this.badgeFontSize = 1;
                 this.avatarWidth = 90;
+                this.lineHeight = 2;
                 this.nameSize = 1;
                 this.desSize = 1;
                 this.linkSize = 1;

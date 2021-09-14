@@ -1,21 +1,6 @@
 <template>
     <q-footer class="bg-white text-grey footer" :style="{ heigth: footerHeight + 'px' }">
 
-        <q-list style="min-width: 300px" class="lt-sm q-pt-md q-pb-md bg-grey-3 sns">
-            <div class="row lt-md">
-                <div class="col-6 column items-center">
-                    <a href="https://twitter.com/salvia__mama" target="_blank">
-                        <q-img src="../assets/twitter-logo-blue.png" width="37px"></q-img>
-                    </a>
-                </div>
-                <div class="col-6 column items-center">
-                    <a href="https://www.instagram.com/salvia_mama/" target="_blank">
-                        <q-img src="../assets/instagram-logo.png" width="33px"></q-img>
-                    </a>
-                </div>
-            </div>
-        </q-list>
-
         <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-5">
                 <div class="main-menu" :style="{ fontSize: mainFontSize + 'vw' }">About us</div>
@@ -111,9 +96,6 @@ export default {
 <style scoped>
 .footer{
     border-top: solid 1px rgb(205, 75, 128);
-}
-.sns{
-    border-bottom: solid 1px rgb(205, 75, 128);
 }
 .main-menu{
     margin: 1.5vw 0 0vw 2.5vw;
