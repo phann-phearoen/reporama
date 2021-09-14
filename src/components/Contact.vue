@@ -419,6 +419,20 @@ export default {
                 this.toTopWidth = 15
             }
         },
+        wordCount(val) {
+            if(val == 2000){
+                this.articleCount.choice2 = ''
+                this.articleCount.choice3 = ''
+            }
+            else if(val == 3000){
+                this.articleCount.choice1 = ''
+                this.articleCount.choice3 = ''
+            }
+            else if(val == 5000){
+                this.articleCount.choice1 = ''
+                this.articleCount.choice2 = ''
+            }
+        }
     },
 
     created() {
