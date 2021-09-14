@@ -112,6 +112,7 @@ export default {
 .link{
     text-decoration: none;
     cursor: pointer;
+    color: grey;
 }
 .link:hover{
     color: rgb(205, 75, 128);
