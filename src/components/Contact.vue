@@ -31,7 +31,10 @@
             @blur="validateName"
             :error="name.isValid===false"
             error-message="お名前を入力してください。"
-        />
+            bottom-slots
+        >
+        <template>something</template>
+        </q-input>
 
         <q-input class="input"
             name="user_company"
@@ -180,8 +183,7 @@
 
         <div class="publish input">
             <div class="label">
-                <span>salvia への掲載を希望しますか︖</span><span v-if="postConsentsIsValid==null">（必須）</span>
-                <span style="color: red" v-if="postConsentsIsValid==false">（必須）</span>
+                <span>salvia への掲載を希望しますか︖</span><span class="required">（必須）</span>
             </div>
             <hr>
             <div class="row">
@@ -200,8 +202,7 @@
 
         <div class="kikaku input">
             <div class="label">
-                <span>「salvia 読者プレゼントキャンペーン」での企画を希望しますか︖</span><span v-if="kikakuConsentsIsValid==null">（必須）</span>
-                <span style="color: red" v-if="kikakuConsentsIsValid==false">（必須）</span>
+                <span>「salvia 読者プレゼントキャンペーン」での企画を希望しますか︖</span><span class="required">（必須）</span>
             </div>
             <hr>
             <div class="row">
@@ -453,5 +454,11 @@ export default {
 .success{
     color: rgb(205, 75, 128);
     margin: 1.75vw auto 1vw .5vw;
+}
+.q-field:deep().q-field__messages.col{
+    color: #C10015;
+}
+.required{
+    color: #C10015;
 }
 </style>
