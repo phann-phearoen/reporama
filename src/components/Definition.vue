@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="col-1 self-center arrow">
-            <q-img src="../assets/arrow.png" width="75%"></q-img>
+            <q-img src="../assets/arrow1.png" width="75%"></q-img>
         </div>
         <div class="col-6 self-center gt-xs">
             <div class="des-plain" :style="{ fontSize: abbreFontSize + 'vw'}">の頭文字からレポラマと名付けた</div>
