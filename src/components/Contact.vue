@@ -27,7 +27,7 @@
             outlined
             v-model="name.value"
             label="お名前"
-            hint="必須"
+            hint="※必須"
             @blur="validateName"
             :error="name.isValid===false"
             error-message="お名前を入力してください。"
@@ -42,7 +42,7 @@
             outlined
             v-model="company.value"
             label="会社名"
-            hint="必須"
+            hint="※必須"
             @blur="validateCom"
             :error="company.isValid===false"
             error-message="会社名を入力してください。"
@@ -54,7 +54,7 @@
             outlined
             v-model="email.value"
             label="メールアドレス"
-            hint="必須"
+            hint="※必須"
             @keyup="validateEmail"
             @blur="validateEmail"
             :error="email.isValid===false"
@@ -76,8 +76,7 @@
 
         <div class="plan input">
             <div class="label">
-                <span>お申込みプラン</span><span v-if="appPlanIsValid==null">（必須）</span>
-                <span style="color: red" v-if="appPlanIsValid==false">（必須）</span>
+                <span>お申込みプラン</span><span class="required">※必須</span>
             </div>
             <hr>
             <div class="row">
@@ -183,7 +182,7 @@
 
         <div class="publish input">
             <div class="label">
-                <span>salvia への掲載を希望しますか︖</span><span class="required">（必須）</span>
+                <span>salvia への掲載を希望しますか︖</span><span class="required">※必須</span>
             </div>
             <hr>
             <div class="row">
@@ -202,7 +201,7 @@
 
         <div class="kikaku input">
             <div class="label">
-                <span>「salvia 読者プレゼントキャンペーン」での企画を希望しますか︖</span><span class="required">（必須）</span>
+                <span>「salvia 読者プレゼントキャンペーン」での企画を希望しますか︖</span><span class="required">※必須</span>
             </div>
             <hr>
             <div class="row">
@@ -223,7 +222,7 @@
             type="textarea"
             v-model="inquiry.value"
             label="お問い合わせの内容"
-            hint="必須"
+            hint="※必須"
             @blur="validateInquiry"
             :error="inquiry.isValid===false"
             error-message="お問い合わせ内容を入力してください。"
