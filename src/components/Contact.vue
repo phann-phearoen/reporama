@@ -236,7 +236,7 @@
         />
 
         <div class="row">
-            <q-btn class="submit" outline type="submit" style="color: rgb(205, 75, 128)" >送　信</q-btn>
+            <q-btn class="submit" outline type="submit" :disable="isSending" style="color: rgb(205, 75, 128)" >{{ isSending ? '送　信　中' : '送　信' }}</q-btn>
         </div>
     </q-form>
 
@@ -249,7 +249,7 @@
 import BaseBadge from './base/BaseBadge.vue';
 
 const EMAIL_ENDPOINT = 'https://mi5k7vwadlfqj627c5xnyprawa0mnlth.lambda-url.ap-northeast-1.on.aws/';
-const CONTACT_ADMIN_EMAIL = 'moehtet.i@wannagrow.co.jp';
+const CONTACT_ADMIN_EMAIL = 'saiyou@wannagrow.co.jp';
 const CONTACT_AUTH_EMAIL = 'date@wannagrow.co.jp';
 
 function escapeHtml(unsafe) {
@@ -276,25 +276,26 @@ function createEmailApiError(response, responseBody) {
 }
 
 function createAdminEmailTemplate(formData) {
+    const choice = { '2000': 'choice1', '3000': 'choice2', '5000': 'choice3' }[formData.wordCount];
+    const selectedArticleCount = formData.articleCount[choice];
     return `
         <div style="font-family: Arial, sans-serif; max-width: 700px; margin: 0 auto; line-height: 1.8;">
             <p>レポラマの【お問い合わせが入りました】</p>
-            <p>お名前： ${escapeHtml(formData.name)}</p>
-            <p>会社名： ${escapeHtml(formData.company)}</p>
-            <p>メールアドレス： ${escapeHtml(formData.email)}</p>
-            <p>電話番号： ${escapeHtml(formData.phone)}</p>
+            <p>お名前： ${escapeHtml(formData.name.value)}</p>
+            <p>会社名： ${escapeHtml(formData.company.value)}</p>
+            <p>メールアドレス： ${escapeHtml(formData.email.value)}</p>
+            <p>電話番号： ${escapeHtml(formData.phone.value)}</p>
             <p>ご依頼数</p>
-            <p>${escapeHtml(formData.wordCount)} 文字程度のレポート記事：  ${escapeHtml(formData.articleCount)}本</p>
+            <p>${escapeHtml(formData.wordCount)} 文字程度のレポート記事：  ${escapeHtml(String(selectedArticleCount ?? ''))}本</p>
             <p>salvia への掲載希望： ${escapeHtml(formData.postConsents)}</p>
             <p>「salvia 読者プレゼントキャンペーン」での企画を希望しますか: ${escapeHtml(formData.kikakuConsents)}</p>
-            <p>お問い合わせ内容： ${escapeHtml(formData.inquiry)}</p>
+            <p>お問い合わせ内容： ${escapeHtml(formData.inquiry.value)}</p>
 
         </div>
     `;
 }
 
 async function sendEmail(formData) {    
-    console.log('Sending email with form data:', formData);
     const payload = {
 		authEmail: CONTACT_AUTH_EMAIL,
 		to: CONTACT_ADMIN_EMAIL,
@@ -356,6 +357,7 @@ export default {
             toTopMarginRight: null,
 
             alert: null,
+            isSending: false,
         }
     },
     computed: {
@@ -419,6 +421,8 @@ export default {
         },
 
         onSubmit(e) {
+            if (this.isSending) return;
+
             this.validateName()
             this.validateCom()
             this.validateEmail()
@@ -445,6 +449,8 @@ export default {
                     kikakuConsents: this.kikakuConsents,
                     inquiry: this.inquiry
                 };
+                console.log('Form data to be sent:', formData);
+                this.isSending = true;
                 sendEmail(formData)
                 .then(
                     (result) => {
@@ -468,7 +474,9 @@ export default {
                         console.log("FAILED...", error);
                         this.alert = false
                     }
-                );
+                ).finally(() => {
+                    this.isSending = false;
+                });
             }
             else{                
                 window.scrollTo({ top: target.offsetTop + 60, left: 0, behavior: 'smooth'});
