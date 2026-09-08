@@ -449,7 +449,6 @@ export default {
                     kikakuConsents: this.kikakuConsents,
                     inquiry: this.inquiry
                 };
-                console.log('Form data to be sent:', formData);
                 this.isSending = true;
                 sendEmail(formData)
                 .then(
