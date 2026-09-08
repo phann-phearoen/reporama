@@ -99,6 +99,7 @@
                         outlined
                         v-model="articleCount.choice1"
                         type="number"
+                        min="1"
                         suffix="本"
                     />
                     <q-input
@@ -108,6 +109,7 @@
                         outlined
                         v-model="articleCount.choice1"
                         type="number"
+                        min="1"
                         suffix="本"
                     />
                 </div>
@@ -132,6 +134,7 @@
                         outlined
                         v-model="articleCount.choice2"
                         type="number"
+                        min="1"
                         suffix="本"
                     />
                     <q-input 
@@ -141,6 +144,7 @@
                         outlined
                         v-model="articleCount.choice2"
                         type="number"
+                        min="1"
                         suffix="本"
                     />
                 </div>
@@ -165,6 +169,7 @@
                         outlined
                         v-model="articleCount.choice3"
                         type="number"
+                        min="1"
                         suffix="本"
                     />
                     <q-input
@@ -174,6 +179,7 @@
                         outlined
                         v-model="articleCount.choice3"
                         type="number"
+                        min="1"
                         suffix="本"
                     />
                 </div>
@@ -242,9 +248,77 @@
 <script>
 import BaseBadge from './base/BaseBadge.vue';
 
-import emailjs from "emailjs-com";
-import { init } from "emailjs-com";
-init("user_VtX1Olx5DpcWVsjca1cFM");
+const EMAIL_ENDPOINT = 'https://mi5k7vwadlfqj627c5xnyprawa0mnlth.lambda-url.ap-northeast-1.on.aws/';
+const CONTACT_ADMIN_EMAIL = 'moehtet.i@wannagrow.co.jp';
+const CONTACT_AUTH_EMAIL = 'date@wannagrow.co.jp';
+
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
+
+async function parseJsonSafely(response) {
+    try {
+        return await response.json();
+    } catch (error) {
+        console.error('Failed to parse JSON:', error);
+        return null;
+    }
+ }
+
+function createEmailApiError(response, responseBody) {
+	const detail = responseBody && responseBody.message ? responseBody.message : `Request failed with status ${response ? response.status : 'unknown'}`;
+	return new Error(detail);
+}
+
+function createAdminEmailTemplate(formData) {
+    return `
+        <div style="font-family: Arial, sans-serif; max-width: 700px; margin: 0 auto; line-height: 1.8;">
+            <p>レポラマの【お問い合わせが入りました】</p>
+            <p>お名前： ${escapeHtml(formData.name)}</p>
+            <p>会社名： ${escapeHtml(formData.company)}</p>
+            <p>メールアドレス： ${escapeHtml(formData.email)}</p>
+            <p>電話番号： ${escapeHtml(formData.phone)}</p>
+            <p>ご依頼数</p>
+            <p>${escapeHtml(formData.wordCount)} 文字程度のレポート記事：  ${escapeHtml(formData.articleCount)}本</p>
+            <p>salvia への掲載希望： ${escapeHtml(formData.postConsents)}</p>
+            <p>「salvia 読者プレゼントキャンペーン」での企画を希望しますか: ${escapeHtml(formData.kikakuConsents)}</p>
+            <p>お問い合わせ内容： ${escapeHtml(formData.inquiry)}</p>
+
+        </div>
+    `;
+}
+
+async function sendEmail(formData) {    
+    console.log('Sending email with form data:', formData);
+    const payload = {
+		authEmail: CONTACT_AUTH_EMAIL,
+		to: CONTACT_ADMIN_EMAIL,
+		subject: 'お問い合わせがありました',
+		body: createAdminEmailTemplate(formData),
+		smtpProvider: 'gmail',
+	};
+
+	const response = await fetch(EMAIL_ENDPOINT, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(payload),
+	});
+
+	const responseBody = await parseJsonSafely(response);
+
+	if (!response.ok || !responseBody || responseBody.ok !== true) {
+		throw createEmailApiError(response, responseBody);
+	}
+
+	return responseBody;
+}
 
 export default {
     components: { BaseBadge, },
@@ -360,13 +434,18 @@ export default {
             this.email.isValid && this.appPlanIsValid && 
             this.postConsentsIsValid && this.kikakuConsentsIsValid && this.inquiry.isValid){
                 
-                emailjs
-                .sendForm(
-                    "service-mamasuku",
-                    "template_reporama",
-                    e.target,
-                    "user_VtX1Olx5DpcWVsjca1cFM"
-                )
+                const formData = {
+                    name: this.name,
+                    company: this.company,
+                    email: this.email,
+                    phone: this.phone,
+                    wordCount: this.wordCount,
+                    articleCount: this.articleCount,
+                    postConsents: this.postConsents,
+                    kikakuConsents: this.kikakuConsents,
+                    inquiry: this.inquiry
+                };
+                sendEmail(formData)
                 .then(
                     (result) => {
                         console.log("SUCCESS!", result.status, result.text)
